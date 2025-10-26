@@ -1,0 +1,13 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
+
+# Log and data files
+olmocr_pipeline/data/logs/
+olmocr_pipeline/data/processed_html/
+
+docling/
