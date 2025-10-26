@@ -1,0 +1,10 @@
+olmocr
+haystack-ai
+sentence-transformers
+openai
+beautifulsoup4
+pdf2image
+opencv-python-headless
+PyMuPDF
+torch          # optional if conda already provides it
+transformers   # OlmOCR dependency

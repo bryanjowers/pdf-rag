@@ -1,120 +1,105 @@
 #!/usr/bin/env python3
 """
-process_pdf.py — OlmOCR + Docling OCR pipeline (Milestone #1)
+process_pdf.py — Modernized OlmOCR-2 + QA pipeline (Milestone #2)
 
-Usage:
-  python process_pdf.py <pdf_path> [--preprocess] [--summary] [--diff <prev_html>] [--qa] [--mock]
+Usage examples:
+  python process_pdf.py app/samples/*.pdf --summary
+  python process_pdf.py app/samples/*.pdf --preprocess --summary
+  python process_pdf.py app/samples/*.pdf --qa
 """
 
 import argparse
-import json
 import os
 import time
-from datetime import datetime
 from pathlib import Path
+from datetime import datetime
+import json
+import webbrowser
 
-# Local helper imports
+# Local imports
+from qa_summary import summarize_output
 from utils_preprocess import preprocess_pdf
-from qa_summary import summarize_output, diff_outputs
+
+# ---------------------------------------------------------------------
+# CONFIG
+# ---------------------------------------------------------------------
+OUTPUT_DIR = Path("olmocr_pipeline/data/processed_html")
+LOG_DIR = Path("olmocr_pipeline/data/logs")
+MODEL_ID = "allenai/olmOCR-2-7B-1025-FP8"
+
+# ---------------------------------------------------------------------
+# UTILITIES
+# ---------------------------------------------------------------------
+def ensure_dirs():
+    for d in [OUTPUT_DIR, LOG_DIR]:
+        d.mkdir(parents=True, exist_ok=True)
 
 
-def ensure_dirs(base_dir="data"):
-    """Ensure required folders exist."""
-    dirs = [
-        f"{base_dir}/pdf_input",
-        f"{base_dir}/processed_html",
-        f"{base_dir}/logs"
-    ]
-    for d in dirs:
-        os.makedirs(d, exist_ok=True)
-    return dirs
+def run_olmocr_single(pdf_path: Path, model=None) -> Path:
+    """Run OlmOCR-2 on one PDF and save HTML output."""
+    from olmocr import OlmOCR
+
+    if model is None:
+        print(f"🧠 Loading model {MODEL_ID} ...")
+        model = OlmOCR.from_pretrained(MODEL_ID, device="cuda")
+
+    html_output = model.run(pdf_path, output_format="html")
+    out_path = OUTPUT_DIR / f"{pdf_path.stem}.html"
+    out_path.write_text(html_output, encoding="utf-8")
+    print(f"✅ {pdf_path.name} → {out_path.name}")
+    return out_path
 
 
-def mock_ocr(pdf_path):
-    """Mock OCR for local testing (no GPU)."""
-    html_output = f"<html><body><h2>Mock OCR output for {pdf_path.name}</h2></body></html>"
-    return html_output
+def save_summary(pdf_path: Path, html_path: Path, start_time: float):
+    summary = summarize_output(pdf_path, html_path, start_time)
+    summary_file = LOG_DIR / f"{pdf_path.stem}_summary.json"
+    summary_file.write_text(json.dumps(summary, indent=2))
+    print(f"📈 Summary saved → {summary_file}")
 
 
-def save_output(content, out_path):
-    out_path.write_text(content, encoding="utf-8")
-    print(f"✅ Saved output: {out_path}")
-
-
+# ---------------------------------------------------------------------
+# MAIN
+# ---------------------------------------------------------------------
 def main():
-    parser = argparse.ArgumentParser(description="OlmOCR + Docling PDF Processor")
-    parser.add_argument("pdf_path", type=str, help="Path to the input PDF")
+    parser = argparse.ArgumentParser(description="Run OlmOCR-2 on one or more PDFs.")
+    parser.add_argument("pdfs", nargs="+", help="Path(s) to input PDF(s)")
     parser.add_argument("--preprocess", action="store_true", help="Apply image cleanup before OCR")
-    parser.add_argument("--summary", action="store_true", help="Generate post-run summary JSON")
-    parser.add_argument("--diff", type=str, help="Compare this run’s HTML to a previous one")
-    parser.add_argument("--qa", action="store_true", help="Open raw HTML in browser for inspection")
-    parser.add_argument("--mock", action="store_true", help="Run in mock (no OCR) mode")
+    parser.add_argument("--summary", action="store_true", help="Generate summary JSON after each run")
+    parser.add_argument("--qa", action="store_true", help="Open resulting HTML in browser for inspection")
+    parser.add_argument("--limit", type=int, default=None, help="Limit number of PDFs processed")
     args = parser.parse_args()
 
-    start_time = time.time()
     ensure_dirs()
-    pdf_path = Path(args.pdf_path)
-    basename = pdf_path.stem
-    timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+    start_time = time.time()
 
-    out_dir = Path("data/processed_html")
-    html_out_path = out_dir / f"{basename}_raw.html"
-    log_dir = Path("data/logs")
-    summary_log_path = log_dir / f"{basename}_summary.json"
+    from olmocr import OlmOCR
+    print(f"🚀 Initializing model {MODEL_ID} (FP8) on CUDA ...")
+    model = OlmOCR.from_pretrained(MODEL_ID, device="cuda")
 
-    # Step 1: Optional preprocessing
-    if args.preprocess:
-        print("🧹 Preprocessing PDF images...")
-        pdf_path = preprocess_pdf(pdf_path)
-        print("✅ Preprocessing complete.")
+    pdf_paths = [Path(p) for p in args.pdfs]
+    if args.limit:
+        pdf_paths = pdf_paths[: args.limit]
 
-    # Step 2: OCR or Mock
-    if args.mock:
-        print("🔧 Running in mock mode...")
-        html_content = mock_ocr(pdf_path)
-    else:
-        print("🚀 Running real OCR via OlmOCR...")
+    for pdf_path in pdf_paths:
+        print(f"\n📄 Processing {pdf_path.name} ...")
 
-        from transformers import AutoProcessor, AutoModelForVision2Seq
-        import torch
-        from PIL import Image
-        from pdf2image import convert_from_path
+        if args.preprocess:
+            print("🧹 Running preprocessing step ...")
+            pdf_path = preprocess_pdf(pdf_path)
 
-        model_id = "IlluinTechnology/OlmOCR"
-        processor = AutoProcessor.from_pretrained(model_id)
-        model = AutoModelForVision2Seq.from_pretrained(model_id, torch_dtype=torch.float16).to("cuda")
+        try:
+            html_path = run_olmocr_single(pdf_path, model=model)
 
-        pages = convert_from_path(str(pdf_path), dpi=300)
-        html_outputs = []
+            if args.summary:
+                save_summary(pdf_path, html_path, start_time)
 
-        for page_idx, page in enumerate(pages):
-            inputs = processor(images=page, return_tensors="pt").to("cuda", torch.float16)
-            generated_ids = model.generate(**inputs, max_new_tokens=2048)
-            html = processor.batch_decode(generated_ids, skip_special_tokens=True)[0]
-            html_outputs.append(html)
-            print(f"✅ Page {page_idx + 1} processed")
+            if args.qa:
+                webbrowser.open(f"file://{html_path.resolve()}")
 
-        html_content = "\n".join(html_outputs)
+        except Exception as e:
+            print(f"⚠️  Error processing {pdf_path.name}: {e}")
 
-    save_output(html_content, html_out_path)
-
-    # Step 3: Optional QA view
-    if args.qa:
-        import webbrowser
-        webbrowser.open(f"file://{html_out_path.resolve()}")
-
-    # Step 4: Optional diff
-    if args.diff:
-        diff_log = diff_outputs(html_out_path, Path(args.diff))
-        print(f"📊 Diff results: {json.dumps(diff_log, indent=2)}")
-
-    # Step 5: Optional summary
-    if args.summary:
-        summary = summarize_output(pdf_path, html_out_path, start_time)
-        summary_log_path.write_text(json.dumps(summary, indent=2))
-        print(f"📈 Summary saved: {summary_log_path}")
-
-    print("🎯 Done.")
+    print("\n🎯 Done. All outputs written to:", OUTPUT_DIR.resolve())
 
 
 if __name__ == "__main__":

@@ -1,0 +1,99 @@
+.
+├── app
+│   ├── main.py
+│   └── samples
+│       ├── 2023004079 ASSN. Legacy Reserves Operating LP to Silver Hill Haynesville E&P LLC Shelby County TX.pdf
+│       ├── 2023004337 Deed of Trust Silver Hill Haynesville E&P LLC and Wells Fargo Bank NA, Shelby County, TX.pdf
+│       └── 871-828_Assn_Marathon Oil to Marathon Oil (East TX).pdf
+├── docling
+│   ├── CHANGELOG.md
+│   ├── CITATION.cff
+│   ├── CODE_OF_CONDUCT.md
+│   ├── CONTRIBUTING.md
+│   ├── Dockerfile
+│   ├── docling
+│   │   ├── __init__.py
+│   │   ├── backend
+│   │   ├── chunking
+│   │   ├── cli
+│   │   ├── datamodel
+│   │   ├── document_converter.py
+│   │   ├── document_extractor.py
+│   │   ├── exceptions.py
+│   │   ├── models
+│   │   ├── pipeline
+│   │   ├── py.typed
+│   │   └── utils
+│   ├── docs
+│   │   ├── assets
+│   │   ├── concepts
+│   │   ├── examples
+│   │   ├── faq
+│   │   ├── getting_started
+│   │   ├── index.md
+│   │   ├── installation
+│   │   ├── integrations
+│   │   ├── overrides
+│   │   ├── reference
+│   │   ├── stylesheets
+│   │   ├── usage
+│   │   └── v2.md
+│   ├── LICENSE
+│   ├── MAINTAINERS.md
+│   ├── mkdocs.yml
+│   ├── pyproject.toml
+│   ├── README.md
+│   ├── tests
+│   │   ├── __init__.py
+│   │   ├── data
+│   │   ├── data_scanned
+│   │   ├── test_asr_mlx_whisper.py
+│   │   ├── test_asr_pipeline.py
+│   │   ├── test_backend_asciidoc.py
+│   │   ├── test_backend_csv.py
+│   │   ├── test_backend_docling_json.py
+│   │   ├── test_backend_docling_parse_v2.py
+│   │   ├── test_backend_docling_parse_v4.py
+│   │   ├── test_backend_docling_parse.py
+│   │   ├── test_backend_html.py
+│   │   ├── test_backend_jats.py
+│   │   ├── test_backend_markdown.py
+│   │   ├── test_backend_mets_gbs.py
+│   │   ├── test_backend_msexcel.py
+│   │   ├── test_backend_msword.py
+│   │   ├── test_backend_patent_uspto.py
+│   │   ├── test_backend_pdfium.py
+│   │   ├── test_backend_pptx.py
+│   │   ├── test_backend_vtt.py
+│   │   ├── test_backend_webp.py
+│   │   ├── test_cli.py
+│   │   ├── test_code_formula.py
+│   │   ├── test_data_gen_flag.py
+│   │   ├── test_document_picture_classifier.py
+│   │   ├── test_e2e_conversion.py
+│   │   ├── test_e2e_ocr_conversion.py
+│   │   ├── test_extraction.py
+│   │   ├── test_input_doc.py
+│   │   ├── test_interfaces.py
+│   │   ├── test_invalid_input.py
+│   │   ├── test_legacy_format_transform.py
+│   │   ├── test_ocr_utils.py
+│   │   ├── test_options.py
+│   │   ├── test_pdf_password.py
+│   │   ├── test_settings_load.py
+│   │   ├── test_threaded_pipeline.py
+│   │   └── verify_utils.py
+│   └── uv.lock
+├── olmocr_pipeline
+│   ├── data
+│   │   ├── logs
+│   │   ├── pdf_input
+│   │   └── processed_html
+│   ├── process_pdf.py
+│   ├── qa_summary.py
+│   ├── rebuild_env_clean.sh
+│   ├── run_olmocr.py
+│   └── utils_preprocess.py
+└── project_tree.txt
+
+32 directories, 65 files
