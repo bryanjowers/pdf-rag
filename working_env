@@ -1,0 +1,13 @@
+nvidia-smi | head -n 10
+Torch: 2.8.0+cu128
+Linux-6.8.0-1042-gcp-x86_64-with-glibc2.35
+Mon Oct 27 02:12:13 2025       
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 535.274.02             Driver Version: 535.274.02   CUDA Version: 12.2     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  NVIDIA L4                      Off | 00000000:00:03.0 Off |                    0 |
+| N/A   58C    P8              22W /  72W |      0MiB / 23034MiB |      0%      Default |

@@ -108,7 +108,7 @@ def run_olmocr_batch(pdf_paths: list[Path], workers: int, log_file: Path) -> Non
         sys.executable,
         "-m", module_path,
         str(RAG_STAGING_DIR),
-        "--html", "--markdown",
+        "--markdown",
         "--model", MODEL_ID,
         "--workers", str(workers),
         "--target_longest_image_dim", TARGET_IMAGE_DIM,
