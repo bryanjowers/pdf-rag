@@ -11,4 +11,10 @@ python olmocr_pipeline/process_pdf.py pdf_input/"2023004079 ASSN. Legacy Reserve
 python olmocr_pipeline/process_pdf.py pdf_input/"871-828_Assn_Marathon Oil to Marathon Oil (East TX).pdf" --summary --qa --workers 6
 
 
+python olmocr_pipeline/process_pdf.py pdf_input/"simple.pdf" --summary --qa --workers 6
 
+
+
+
+# mac local sync
+gsutil -m rsync -r gs://legal-ocr-results ~/pdf-rag/legal-ocr-results
