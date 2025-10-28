@@ -1,7 +1,7 @@
 ASSIGNMENT AND QUITCLAIM
 
 STATE OF TEXAS
-COUNTY OF Shelby
+COUNTY OF SHELBY
 
 SS. KNOW ALL MEN BY THESE PRESENTS:
 
@@ -17,7 +17,7 @@ Marathon Oil Company, an Ohio corporation, hereinafter referred to as Assignor, 
 
 5. all wells, equipment and facilities which are located on or used in connection with the production, treatment or transportation of oil and gas from the interests described above;
 
-6. all oil and gas and other minerals produced from or allocated to the interests described above before the effective time; and which are unsold as of the effective time, and all oil and gas and other minerals produced from or allocated to the interests described above after the effective time;
+6. all oil and gas and other minerals produced from or allocated to the interests described above before the effective time, and which are unsold as of the effective time, and all oil and gas and other minerals produced from or allocated to the interests described above after the effective time;
 
 7. all contracts for the sale of oil and gas and other minerals produced from or allocated to the interests described above and in the proceeds of such sale;
 
@@ -40,12 +40,14 @@ GENERAL PARTNER
 
 By: John T. Mills
 Attorney-in-Fact of Marathon Oil Company, acting on behalf of Marathon Oil Company in its individual capacity as Assignor, and on behalf of Marathon Oil Company as General Partner of Marathon Oil (East Texas) LP on behalf of Marathon Oil (East Texas) LP, Assignee
+ACKNOWLEDGMENT
+
 STATE OF TEXAS
 COUNTY OF HARRIS
 
 The foregoing instrument was acknowledged before me this 12th day of November, 1999, by John T. Mille as Attorney-in-Fact of Marathon Oil Company, acting on behalf of Marathon Oil Company in its individual capacity as Assignor, and on behalf of Marathon Oil Company as General Partner of Marathon Oil (East Texas) LP on behalf of Marathon Oil (East Texas) LP, Assignee.
 
-[Signature]
+[signature-block]
 Notary Public, State of Texas
 Printed Name: Cynthia Adler
 
@@ -98,7 +100,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
   </tr>
   <tr>
     <td>TX-002829-1</td>
-    <td>SHAYER, M A</td>
+    <td>SHAVER, M A</td>
     <td>OIL LEASE</td>
     <td>05/28/1936</td>
     <td>SHELBY</td>
@@ -108,7 +110,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
   </tr>
   <tr>
     <td>TX-002829-3</td>
-    <td>SHAYER, DALE ANDERSON</td>
+    <td>SHAVER, DALE ANDERSON</td>
     <td>OIL & GAS LEASE</td>
     <td>05/26/1941</td>
     <td>SHELBY</td>
@@ -118,7 +120,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
   </tr>
   <tr>
     <td>TX-002829-4</td>
-    <td>SHAYER, M A</td>
+    <td>SHAVER, M A</td>
     <td>OIL LEASE</td>
     <td>02/18/1944</td>
     <td>SHELBY</td>
@@ -675,7 +677,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
   </tr>
   <tr>
     <td>TX-030518-A</td>
-    <td>ROSSELL, L N</td>
+    <td>RUSSELL, L N</td>
     <td>OIL & GAS LEASE</td>
     <td>03/15/1995</td>
     <td>SHELBY</td>
@@ -1019,8 +1021,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <th>DOCUMENT TYPE</th>
     <th>DOC DATE</th>
     <th>COUNTY</th>
-    <th>RECORDING BK</th>
-    <th>PG / DOC #</th>
+    <th>RECORDING BK / PG / DOC #</th>
   </tr>
   <tr>
     <td>TX-030703-A</td>
@@ -1028,8 +1029,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>07/21/1995</td>
     <td>SHELBY</td>
-    <td>790</td>
-    <td>420-952602</td>
+    <td>790 420 952602</td>
   </tr>
   <tr>
     <td>TX-030704-</td>
@@ -1037,8 +1037,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>07/20/1995</td>
     <td>SHELBY</td>
-    <td>790</td>
-    <td>432 952606</td>
+    <td>790 432 952606</td>
   </tr>
   <tr>
     <td>TX-030705-</td>
@@ -1046,8 +1045,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>07/20/1995</td>
     <td>SHELBY</td>
-    <td>790</td>
-    <td>387 952596</td>
+    <td>790 387 952596</td>
   </tr>
   <tr>
     <td>TX-030706-</td>
@@ -1055,8 +1053,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>07/20/1995</td>
     <td>SHELBY</td>
-    <td>790</td>
-    <td>411 952599</td>
+    <td>790 411 952599</td>
   </tr>
   <tr>
     <td>TX-030707-</td>
@@ -1064,8 +1061,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>07/20/1995</td>
     <td>SHELBY</td>
-    <td>790</td>
-    <td>426 952604</td>
+    <td>790 426 952604</td>
   </tr>
   <tr>
     <td>TX-030712-A</td>
@@ -1073,8 +1069,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>07/21/1995</td>
     <td>SHELBY</td>
-    <td>790</td>
-    <td>414 952600</td>
+    <td>790 414 952600</td>
   </tr>
   <tr>
     <td>TX-030712-B</td>
@@ -1082,8 +1077,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>07/31/1995</td>
     <td>SHELBY</td>
-    <td>791</td>
-    <td>444 952875</td>
+    <td>791 444 952875</td>
   </tr>
   <tr>
     <td>TX-030722-</td>
@@ -1091,17 +1085,15 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>07/20/1995</td>
     <td>SHELBY</td>
-    <td>790</td>
-    <td>685 952680</td>
+    <td>790 685 952680</td>
   </tr>
   <tr>
     <td>TX-030729-A</td>
     <td>BERG, JACK WILSON</td>
     <td>OIL & GAS LEASE</td>
-    <td>07/21/1995</td>
+    <td>07/20/1995</td>
     <td>SHELBY</td>
-    <td>790</td>
-    <td>795</td>
+    <td>790 795</td>
   </tr>
   <tr>
     <td>TX-030730-</td>
@@ -1109,8 +1101,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>07/21/1995</td>
     <td>SHELBY</td>
-    <td>790</td>
-    <td>792</td>
+    <td>790 792</td>
   </tr>
   <tr>
     <td>TX-030734-</td>
@@ -1118,8 +1109,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>07/20/1995</td>
     <td>SHELBY</td>
-    <td>791</td>
-    <td>441 952874</td>
+    <td>791 441 952874</td>
   </tr>
   <tr>
     <td>TX-030743-</td>
@@ -1127,8 +1117,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>07/21/1995</td>
     <td>SHELBY</td>
-    <td>791</td>
-    <td>836 952976</td>
+    <td>791 836 952976</td>
   </tr>
   <tr>
     <td>TX-030750-A</td>
@@ -1136,8 +1125,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>08/10/1995</td>
     <td>SHELBY</td>
-    <td>791</td>
-    <td>841</td>
+    <td>791 841</td>
   </tr>
   <tr>
     <td>TX-030775-A</td>
@@ -1145,8 +1133,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>08/16/1995</td>
     <td>SHELBY</td>
-    <td>792</td>
-    <td>453 953121</td>
+    <td>792 453 953121</td>
   </tr>
   <tr>
     <td>TX-030775-B</td>
@@ -1154,8 +1141,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>08/24/1995</td>
     <td>SHELBY</td>
-    <td>793</td>
-    <td>580</td>
+    <td>793 580</td>
   </tr>
   <tr>
     <td>TX-030775-C</td>
@@ -1163,8 +1149,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>08/30/1999</td>
     <td>SHELBY</td>
-    <td>866</td>
-    <td>266</td>
+    <td>866 266</td>
   </tr>
   <tr>
     <td>TX-030822-A</td>
@@ -1172,8 +1157,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>04/04/1995</td>
     <td>SHELBY</td>
-    <td>795</td>
-    <td>580 953903</td>
+    <td>795 580 953903</td>
   </tr>
   <tr>
     <td>TX-031620-</td>
@@ -1181,8 +1165,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>02/03/1997</td>
     <td>SHELBY</td>
-    <td>814</td>
-    <td>841</td>
+    <td>814 841</td>
   </tr>
   <tr>
     <td>TX-031659-A</td>
@@ -1190,8 +1173,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>02/08/1997</td>
     <td>SHELBY</td>
-    <td>815</td>
-    <td>285</td>
+    <td>815 285</td>
   </tr>
   <tr>
     <td>TX-031855-</td>
@@ -1199,8 +1181,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>04/15/1997</td>
     <td>SHELBY</td>
-    <td>819</td>
-    <td>802</td>
+    <td>819 802</td>
   </tr>
   <tr>
     <td>TX-031857-A</td>
@@ -1208,8 +1189,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>04/16/1997</td>
     <td>SHELBY</td>
-    <td>819</td>
-    <td>799</td>
+    <td>819 799</td>
   </tr>
   <tr>
     <td>TX-031857-B</td>
@@ -1217,8 +1197,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>05/20/1997</td>
     <td>SHELBY</td>
-    <td>821</td>
-    <td>317</td>
+    <td>821 317</td>
   </tr>
   <tr>
     <td>TX-031857-C</td>
@@ -1226,8 +1205,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>05/20/1997</td>
     <td>SHELBY</td>
-    <td>821</td>
-    <td>314</td>
+    <td>821 314</td>
   </tr>
   <tr>
     <td>TX-031857-D</td>
@@ -1235,8 +1213,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>06/03/1997</td>
     <td>SHELBY</td>
-    <td>821</td>
-    <td>876</td>
+    <td>821 876</td>
   </tr>
   <tr>
     <td>TX-031857-E</td>
@@ -1244,8 +1221,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>07/09/1997</td>
     <td>SHELBY</td>
-    <td>823</td>
-    <td>682</td>
+    <td>823 682</td>
   </tr>
   <tr>
     <td>TX-031857-F</td>
@@ -1253,8 +1229,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>07/11/1997</td>
     <td>SHELBY</td>
-    <td>822</td>
-    <td>891</td>
+    <td>822 891</td>
   </tr>
   <tr>
     <td>TX-031857-G</td>
@@ -1262,8 +1237,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>07/08/1997</td>
     <td>SHELBY</td>
-    <td>823</td>
-    <td>180</td>
+    <td>823 180</td>
   </tr>
   <tr>
     <td>TX-031857-H</td>
@@ -1271,8 +1245,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>08/03/1997</td>
     <td>SHELBY</td>
-    <td>838</td>
-    <td>308</td>
+    <td>838 308</td>
   </tr>
   <tr>
     <td>TX-031914-</td>
@@ -1280,8 +1253,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>05/07/1997</td>
     <td>SHELBY</td>
-    <td>820</td>
-    <td>219</td>
+    <td>820 219</td>
   </tr>
   <tr>
     <td>TX-031924-A</td>
@@ -1289,8 +1261,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>05/13/1997</td>
     <td>SHELBY</td>
-    <td>821</td>
-    <td>297</td>
+    <td>821 297</td>
   </tr>
 </table>
 EXHIBIT "A"
@@ -1517,7 +1488,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
   </tr>
   <tr>
     <td>TX-031964-J</td>
-    <td>McGILVRA, BOBBIE J</td>
+    <td>MCGILVRA, BOBBIE J</td>
     <td>OIL & GAS LEASE</td>
     <td>07/10/1997</td>
     <td>SHELBY</td>
@@ -1608,7 +1579,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-031964-R</td>
     <td>WILSON JR, ROBERT E</td>
     <td>OIL & GAS LEASE</td>
-    <td>06/04/1997</td>
+    <td>08/04/1997</td>
     <td>SHELBY</td>
     <td>826</td>
     <td>91</td>
@@ -1618,7 +1589,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-031964-S</td>
     <td>WILSON, HENRY J</td>
     <td>OIL & GAS LEASE</td>
-    <td>06/04/1997</td>
+    <td>08/04/1997</td>
     <td>SHELBY</td>
     <td>826</td>
     <td>93</td>
@@ -1628,7 +1599,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-031964-T</td>
     <td>FORY, NETTIE WILSON</td>
     <td>OIL & GAS LEASE</td>
-    <td>06/04/1997</td>
+    <td>08/04/1997</td>
     <td>SHELBY</td>
     <td>826</td>
     <td>95</td>
@@ -1670,13 +1641,23 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>OIL & GAS LEASE</td>
     <td>11/28/1997</td>
     <td>SHELBY</td>
-    <td>831</td>
-    <td>723</td>
+    <td>830</td>
+    <td>762</td>
     <td></td>
   </tr>
   <tr>
     <td>TX-031964-Z</td>
     <td>MCDONALD, MARGARET WILSON</td>
+    <td>OIL & GAS LEASE</td>
+    <td>11/28/1997</td>
+    <td>SHELBY</td>
+    <td>831</td>
+    <td>723</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>TX-031975-A</td>
+    <td>JOHNSON, SUSIE ALCINE</td>
     <td>OIL & GAS LEASE</td>
     <td>05/09/1997</td>
     <td>SHELBY</td>
@@ -1685,8 +1666,8 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td></td>
   </tr>
   <tr>
-    <td>TX-031975-A</td>
-    <td>JOHNSON, SUSIE ALCINE</td>
+    <td>TX-031986-A</td>
+    <td>WILLIAMS, EVANGELINE</td>
     <td>OIL & GAS LEASE</td>
     <td>05/30/1997</td>
     <td>SHELBY</td>
@@ -1695,23 +1676,13 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td></td>
   </tr>
   <tr>
-    <td>TX-031986-A</td>
-    <td>WILLIAMS, EVANGELINE</td>
+    <td>TX-031986-B</td>
+    <td>BURROWS, JERRY B</td>
     <td>OIL & GAS LEASE</td>
     <td>07/29/1999</td>
     <td>SHELBY</td>
     <td>865</td>
     <td>175</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>TX-031986-B</td>
-    <td>BURROWS, JERRY B</td>
-    <td>OIL & GAS LEASE</td>
-    <td>06/17/1997</td>
-    <td>SHELBY</td>
-    <td>822</td>
-    <td>240</td>
     <td></td>
   </tr>
   <tr>
@@ -1721,17 +1692,17 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>06/17/1997</td>
     <td>SHELBY</td>
     <td>822</td>
-    <td>236</td>
+    <td>240</td>
     <td></td>
   </tr>
   <tr>
     <td>TX-032045-B</td>
     <td>BROWN, DOROTHY SUE</td>
     <td>OIL & GAS LEASE</td>
-    <td>06/16/1997</td>
+    <td>06/17/1997</td>
     <td>SHELBY</td>
     <td>822</td>
-    <td>242</td>
+    <td>236</td>
     <td></td>
   </tr>
   <tr>
@@ -1741,12 +1712,22 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>06/16/1997</td>
     <td>SHELBY</td>
     <td>822</td>
-    <td>234</td>
+    <td>242</td>
     <td></td>
   </tr>
   <tr>
     <td>TX-032046-C</td>
     <td>HUGHES, BART M</td>
+    <td>OIL & GAS LEASE</td>
+    <td>06/16/1997</td>
+    <td>SHELBY</td>
+    <td>822</td>
+    <td>234</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>TX-032046-D</td>
+    <td>HUGHES, ODIS BRENT</td>
     <td>OIL & GAS LEASE</td>
     <td>07/16/1997</td>
     <td>SHELBY</td>
@@ -1755,23 +1736,13 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td></td>
   </tr>
   <tr>
-    <td>TX-032046-D</td>
-    <td>HUGHES, ODIS BRENT</td>
+    <td>TX-032046-E</td>
+    <td>HUGHES, BARRY V</td>
     <td>OIL & GAS LEASE</td>
     <td>06/16/1999</td>
     <td>SHELBY</td>
     <td>859</td>
     <td>366</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>TX-032046-E</td>
-    <td>HUGHES, BARRY V</td>
-    <td>OIL & GAS LEASE</td>
-    <td>06/25/1997</td>
-    <td>SHELBY</td>
-    <td>822</td>
-    <td>246</td>
     <td></td>
   </tr>
   <tr>
@@ -1781,7 +1752,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>06/25/1997</td>
     <td>SHELBY</td>
     <td>822</td>
-    <td>248</td>
+    <td>246</td>
     <td></td>
   </tr>
   <tr>
@@ -1791,7 +1762,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>06/25/1997</td>
     <td>SHELBY</td>
     <td>822</td>
-    <td>250</td>
+    <td>248</td>
     <td></td>
   </tr>
   <tr>
@@ -1801,17 +1772,17 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>06/25/1997</td>
     <td>SHELBY</td>
     <td>822</td>
-    <td>252</td>
+    <td>250</td>
     <td></td>
   </tr>
   <tr>
     <td>TX-032071-</td>
     <td>STOKES, DELTON E.</td>
     <td>OIL & GAS LEASE</td>
-    <td>06/25/1997</td>
+    <td>06/18/1997</td>
     <td>SHELBY</td>
-    <td>823</td>
-    <td>678</td>
+    <td>822</td>
+    <td>252</td>
     <td></td>
   </tr>
   <tr>
@@ -1821,12 +1792,22 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>06/25/1997</td>
     <td>SHELBY</td>
     <td>823</td>
-    <td>676</td>
+    <td>678</td>
     <td></td>
   </tr>
   <tr>
     <td>TX-032090-B</td>
     <td>BROWN, SUZANNE SARGENT</td>
+    <td>OIL & GAS LEASE</td>
+    <td>06/25/1997</td>
+    <td>SHELBY</td>
+    <td>823</td>
+    <td>676</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>TX-032093-</td>
+    <td>CRAWFORD, GWENDOLYN</td>
     <td>OIL & GAS LEASE</td>
     <td>06/23/1997</td>
     <td>SHELBY</td>
@@ -1835,8 +1816,8 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td></td>
   </tr>
   <tr>
-    <td>TX-032093-</td>
-    <td>CRAWFORD, GWENDOLYN</td>
+    <td>TX-032108-</td>
+    <td>SAMFORD, BRUCE R</td>
     <td>OIL & GAS LEASE</td>
     <td>07/10/1997</td>
     <td>SHELBY</td>
@@ -1845,23 +1826,13 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td></td>
   </tr>
   <tr>
-    <td>TX-032108-</td>
-    <td>SAMFORD, BRUCE R</td>
+    <td>TX-032116-</td>
+    <td>CARLTON, BOBBY LYNN NEILL</td>
     <td>OIL & GAS LEASE</td>
     <td>05/09/1997</td>
     <td>SHELBY</td>
     <td>824</td>
     <td>125</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>TX-032116-</td>
-    <td>CARLTON, BOBBY LYNN NEILL</td>
-    <td>OIL & GAS LEASE</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
     <td></td>
   </tr>
 </table>
@@ -1897,7 +1868,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
   </tr>
   <tr>
     <td>TX-032143-B</td>
-    <td>BILLINGSLEY, HELEN McCaULEY</td>
+    <td>BILLINGSLEY, HELEN McCauley</td>
     <td>OIL & GAS LEASE</td>
     <td>08/01/1997</td>
     <td>SHELBY</td>
@@ -1905,7 +1876,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
   </tr>
   <tr>
     <td>TX-032143-C</td>
-    <td>SHEPHERD, IRIS McCaULEY</td>
+    <td>SHEPHERD, IRIS McCauley</td>
     <td>OIL & GAS LEASE</td>
     <td>08/01/1997</td>
     <td>SHELBY</td>
@@ -2121,7 +2092,9 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
   </tr>
 </table>
 EXHIBIT "A"
-Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effective 12/31/1999 by and between MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
+Attached to and made a part of that certain
+ASSIGNMENT AND QUITCLAIM dated effective 12/31/1999 by and between
+MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
 
 <table>
   <tr>
@@ -2130,9 +2103,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <th>DOCUMENT TYPE</th>
     <th>DOC DATE</th>
     <th>COUNTY</th>
-    <th>RECORDING BK</th>
-    <th>PG</th>
-    <th>DOC #</th>
+    <th>RECORDING BK PG DOC #</th>
   </tr>
   <tr>
     <td>TX-032576-J</td>
@@ -2140,9 +2111,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>02/28/1998</td>
     <td>SHELBY</td>
-    <td>835</td>
-    <td>345</td>
-    <td></td>
+    <td>835-345</td>
   </tr>
   <tr>
     <td>TX-032576-L</td>
@@ -2150,9 +2119,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>03/03/1998</td>
     <td>SHELBY</td>
-    <td>835</td>
-    <td>331</td>
-    <td></td>
+    <td>835-331</td>
   </tr>
   <tr>
     <td>TX-032576-M</td>
@@ -2160,9 +2127,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>01/30/1998</td>
     <td>SHELBY</td>
-    <td>837</td>
-    <td>382</td>
-    <td></td>
+    <td>837-382</td>
   </tr>
   <tr>
     <td>TX-032576-N</td>
@@ -2170,9 +2135,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>04/06/1998</td>
     <td>SHELBY</td>
-    <td>837</td>
-    <td>860</td>
-    <td></td>
+    <td>837-860</td>
   </tr>
   <tr>
     <td>TX-032576-O</td>
@@ -2180,9 +2143,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>03/03/1998</td>
     <td>SHELBY</td>
-    <td>837</td>
-    <td>862</td>
-    <td></td>
+    <td>837-862</td>
   </tr>
   <tr>
     <td>TX-032576-P</td>
@@ -2190,9 +2151,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>04/22/1998</td>
     <td>SHELBY</td>
-    <td>840</td>
-    <td>809</td>
-    <td></td>
+    <td>840-809</td>
   </tr>
   <tr>
     <td>TX-032576-Q</td>
@@ -2200,9 +2159,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>04/22/1998</td>
     <td>SHELBY</td>
-    <td>840</td>
-    <td>814</td>
-    <td></td>
+    <td>840-814</td>
   </tr>
   <tr>
     <td>TX-032576-R</td>
@@ -2210,9 +2167,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>04/22/1998</td>
     <td>SHELBY</td>
-    <td>840</td>
-    <td>819</td>
-    <td></td>
+    <td>840-819</td>
   </tr>
   <tr>
     <td>TX-032576-S</td>
@@ -2220,9 +2175,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>04/20/1998</td>
     <td>SHELBY</td>
-    <td>841</td>
-    <td>873</td>
-    <td></td>
+    <td>841-873</td>
   </tr>
   <tr>
     <td>TX-032576-T</td>
@@ -2230,9 +2183,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>04/03/1998</td>
     <td>SHELBY</td>
-    <td>844</td>
-    <td>109</td>
-    <td></td>
+    <td>844-109</td>
   </tr>
   <tr>
     <td>TX-032576-U</td>
@@ -2240,9 +2191,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>04/21/1998</td>
     <td>SHELBY</td>
-    <td>845</td>
-    <td>114</td>
-    <td></td>
+    <td>845-114</td>
   </tr>
   <tr>
     <td>TX-032576-V</td>
@@ -2250,9 +2199,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>08/05/1998</td>
     <td>SHELBY</td>
-    <td>883</td>
-    <td>632</td>
-    <td></td>
+    <td>883-632</td>
   </tr>
   <tr>
     <td>TX-032592-A</td>
@@ -2260,9 +2207,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>01/24/1998</td>
     <td>SHELBY</td>
-    <td>834</td>
-    <td>143</td>
-    <td></td>
+    <td>834-143</td>
   </tr>
   <tr>
     <td>TX-032592-B</td>
@@ -2270,9 +2215,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>02/24/1998</td>
     <td>SHELBY</td>
-    <td>839</td>
-    <td>345</td>
-    <td></td>
+    <td>839-345</td>
   </tr>
   <tr>
     <td>TX-032592-C</td>
@@ -2280,9 +2223,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>01/27/1998</td>
     <td>SHELBY</td>
-    <td>834</td>
-    <td>151</td>
-    <td></td>
+    <td>834-151</td>
   </tr>
   <tr>
     <td>TX-032592-D</td>
@@ -2290,9 +2231,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>02/10/1998</td>
     <td>SHELBY</td>
-    <td>834</td>
-    <td>167</td>
-    <td></td>
+    <td>834-167</td>
   </tr>
   <tr>
     <td>TX-032592-E</td>
@@ -2300,9 +2239,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>02/10/1998</td>
     <td>SHELBY</td>
-    <td>834</td>
-    <td>170</td>
-    <td></td>
+    <td>834-170</td>
   </tr>
   <tr>
     <td>TX-032592-F</td>
@@ -2310,9 +2247,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>01/27/1998</td>
     <td>SHELBY</td>
-    <td>835</td>
-    <td>333</td>
-    <td></td>
+    <td>835-333</td>
   </tr>
   <tr>
     <td>TX-032592-G</td>
@@ -2320,9 +2255,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>01/27/1998</td>
     <td>SHELBY</td>
-    <td>835</td>
-    <td>335</td>
-    <td></td>
+    <td>835-335</td>
   </tr>
   <tr>
     <td>TX-032592-I</td>
@@ -2330,9 +2263,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>01/24/1998</td>
     <td>SHELBY</td>
-    <td>835</td>
-    <td>747</td>
-    <td></td>
+    <td>835-747</td>
   </tr>
   <tr>
     <td>TX-032592-J</td>
@@ -2340,9 +2271,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>07/07/1998</td>
     <td>SHELBY</td>
-    <td>842</td>
-    <td>887</td>
-    <td></td>
+    <td>842-887</td>
   </tr>
   <tr>
     <td>TX-032592-K</td>
@@ -2350,9 +2279,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>07/17/1998</td>
     <td>SHELBY</td>
-    <td>843</td>
-    <td>455</td>
-    <td></td>
+    <td>843-455</td>
   </tr>
   <tr>
     <td>TX-032592-L</td>
@@ -2360,9 +2287,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>07/17/1998</td>
     <td>SHELBY</td>
-    <td>843</td>
-    <td>736</td>
-    <td></td>
+    <td>843-736</td>
   </tr>
   <tr>
     <td>TX-032592-M</td>
@@ -2370,9 +2295,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>07/22/1998</td>
     <td>SHELBY</td>
-    <td>843</td>
-    <td>744</td>
-    <td></td>
+    <td>843-744</td>
   </tr>
   <tr>
     <td>TX-032592-N</td>
@@ -2380,9 +2303,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>07/22/1998</td>
     <td>SHELBY</td>
-    <td>844</td>
-    <td>107</td>
-    <td></td>
+    <td>844-107</td>
   </tr>
   <tr>
     <td>TX-032592-O</td>
@@ -2390,9 +2311,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>07/17/1998</td>
     <td>SHELBY</td>
-    <td>847</td>
-    <td>62</td>
-    <td></td>
+    <td>847-62</td>
   </tr>
   <tr>
     <td>TX-032592-P</td>
@@ -2400,9 +2319,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>07/17/1998</td>
     <td>SHELBY</td>
-    <td>847</td>
-    <td>64</td>
-    <td></td>
+    <td>847-64</td>
   </tr>
   <tr>
     <td>TX-032592-Q</td>
@@ -2410,19 +2327,15 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>02/04/1998</td>
     <td>SHELBY</td>
-    <td>848</td>
-    <td>240</td>
-    <td></td>
+    <td>848-240</td>
   </tr>
   <tr>
-    <td>TX-032603-</td>
+    <td>TX-032593-</td>
     <td>BENSON, PAUL EUGENE</td>
     <td>OIL & GAS LEASE</td>
     <td>01/21/1998</td>
     <td>SHELBY</td>
-    <td>834</td>
-    <td>145</td>
-    <td></td>
+    <td>834-145</td>
   </tr>
   <tr>
     <td>TX-032605-</td>
@@ -2430,9 +2343,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>02/13/1998</td>
     <td>SHELBY</td>
-    <td>834</td>
-    <td>173</td>
-    <td></td>
+    <td>834-173</td>
   </tr>
 </table>
 EXHIBIT "A"
@@ -2743,7 +2654,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
   </tr>
   <tr>
     <td>TX-032958-H</td>
-    <td>FULTZ, JOSEPHINE</td>
+    <td>FULTZ, JOSERPHINE</td>
     <td>OIL & GAS LEASE</td>
     <td>06/02/1998</td>
     <td>SHELBY</td>
@@ -2852,7 +2763,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-032958-R</td>
     <td>MEIGS, GAYLE</td>
     <td>OIL & GAS LEASE</td>
-    <td>08/02/1998</td>
+    <td>06/02/1998</td>
     <td>SHELBY</td>
     <td>842</td>
     <td>629</td>
@@ -2862,7 +2773,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-032958-S</td>
     <td>HOLLEY, MARY PATRICIA</td>
     <td>OIL & GAS LEASE</td>
-    <td>08/03/1998</td>
+    <td>06/03/1998</td>
     <td>SHELBY</td>
     <td>843</td>
     <td>460</td>
@@ -2872,7 +2783,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-032958-T</td>
     <td>HUDSON, SCOTTYE HOLLEY</td>
     <td>OIL & GAS LEASE</td>
-    <td>08/03/1998</td>
+    <td>06/03/1998</td>
     <td>SHELBY</td>
     <td>843</td>
     <td>463</td>
@@ -2882,7 +2793,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-032958-U</td>
     <td>SCOTT, JAN WATSON</td>
     <td>OIL & GAS LEASE</td>
-    <td>08/04/1998</td>
+    <td>06/04/1998</td>
     <td>SHELBY</td>
     <td>843</td>
     <td>457</td>
@@ -2902,7 +2813,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-032958-W</td>
     <td>HOLLEY, DOLPH D</td>
     <td>OIL & GAS LEASE</td>
-    <td>08/03/1998</td>
+    <td>06/03/1998</td>
     <td>SHELBY</td>
     <td>843</td>
     <td>738</td>
@@ -2912,7 +2823,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-032958-X</td>
     <td>CRAVEY, SANDRA</td>
     <td>OIL & GAS LEASE</td>
-    <td>08/03/1998</td>
+    <td>06/03/1998</td>
     <td>SHELBY</td>
     <td>844</td>
     <td>101</td>
@@ -2932,7 +2843,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-032958-Z</td>
     <td>FIELDS III, ROGER Q</td>
     <td>OIL & GAS LEASE</td>
-    <td>08/05/1998</td>
+    <td>06/05/1998</td>
     <td>SHELBY</td>
     <td>847</td>
     <td>66</td>
@@ -2942,7 +2853,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-033001-</td>
     <td>MCSWAIN, KERRY GRANT</td>
     <td>OIL & GAS LEASE</td>
-    <td>08/17/1998</td>
+    <td>06/17/1998</td>
     <td>SHELBY</td>
     <td>841</td>
     <td>881</td>
@@ -2952,7 +2863,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-033049-</td>
     <td>JERNIGAN, ETHEL MAXINE</td>
     <td>OIL & GAS LEASE</td>
-    <td>08/19/1998</td>
+    <td>06/19/1998</td>
     <td>SHELBY</td>
     <td>842</td>
     <td>540</td>
@@ -2962,7 +2873,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-033054-</td>
     <td>RUSSELL, ADA MAE</td>
     <td>OIL & GAS LEASE</td>
-    <td>08/22/1998</td>
+    <td>06/22/1998</td>
     <td>SHELBY</td>
     <td>842</td>
     <td>537</td>
@@ -3059,7 +2970,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td></td>
   </tr>
   <tr>
-    <td>TX-033182</td>
+    <td>TX-033182-</td>
     <td>MCSWAIN, WARREN G</td>
     <td>OIL & GAS LEASE</td>
     <td>07/21/1998</td>
@@ -3069,6 +2980,8 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td></td>
   </tr>
 </table>
+
+---END OF MAIN INSTRUMENT---
 EXHIBIT "A"
 Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effective 12/31/1999 by and between MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
 
@@ -3099,7 +3012,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>OIL & GAS LEASE</td>
     <td>08/04/1998</td>
     <td>SHELBY</td>
-    <td>845</td>
+    <td>849</td>
     <td>803</td>
     <td></td>
   </tr>
@@ -3110,7 +3023,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>11/13/1998</td>
     <td>SHELBY</td>
     <td>849</td>
-    <td>642</td>
+    <td>842</td>
     <td></td>
   </tr>
   <tr>
@@ -3120,7 +3033,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>11/20/1998</td>
     <td>SHELBY</td>
     <td>849</td>
-    <td>644</td>
+    <td>844</td>
     <td></td>
   </tr>
   <tr>
@@ -3385,7 +3298,9 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
   </tr>
 </table>
 EXHIBIT "A"
-Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effective 12/31/1999 by and between MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
+Attached to and made a part of that certain
+ASSIGNMENT AND QUITCLAIM dated effective 12/31/1999 by and between
+MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
 
 <table>
   <tr>
@@ -3465,12 +3380,22 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>01/12/1999</td>
     <td>SHELBY</td>
     <td>854</td>
-    <td>210</td>
+    <td>208</td>
     <td></td>
   </tr>
   <tr>
     <td>TX-033408-J</td>
     <td>HENSON, MARY JANE MATHIS</td>
+    <td>OIL & GAS LEASE</td>
+    <td>01/12/1999</td>
+    <td>SHELBY</td>
+    <td>854</td>
+    <td>210</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>TX-033408-K</td>
+    <td>MEEEKS, MICHAEL W</td>
     <td>OIL & GAS LEASE</td>
     <td>01/05/1999</td>
     <td>SHELBY</td>
@@ -3479,8 +3404,8 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX-033408-K</td>
-    <td>MEEEKS, MICHAEL W</td>
+    <td>TX-033408-L</td>
+    <td>MATHIS, JOHN THOMAS</td>
     <td>OIL & GAS LEASE</td>
     <td>01/12/1999</td>
     <td>SHELBY</td>
@@ -3489,8 +3414,8 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX-033408-L</td>
-    <td>MATHIS, JOHN THOMAS</td>
+    <td>TX-033408-M</td>
+    <td>MCSWAIN, ELTON BRADLEY</td>
     <td>OIL & GAS LEASE</td>
     <td>12/23/1998</td>
     <td>SHELBY</td>
@@ -3499,8 +3424,8 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX-033408-M</td>
-    <td>MCSWAIN, ELTON BRADLEY</td>
+    <td>TX-033408-N</td>
+    <td>SKIPPER JR, LAWRENCE N</td>
     <td>OIL & GAS LEASE</td>
     <td>01/19/1999</td>
     <td>SHELBY</td>
@@ -3509,8 +3434,8 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX-033408-N</td>
-    <td>SKIPPER JR, LAWRENCE N</td>
+    <td>TX-033408-O</td>
+    <td>PARNELL, BETTY WOOD</td>
     <td>OIL & GAS LEASE</td>
     <td>01/14/1999</td>
     <td>SHELBY</td>
@@ -3519,8 +3444,8 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX-033408-O</td>
-    <td>PARNELL, BETTY WOOD</td>
+    <td>TX-033408-P</td>
+    <td>GIBBONS, MARGARET JEAN FARRELL</td>
     <td>OIL & GAS LEASE</td>
     <td>01/19/1999</td>
     <td>SHELBY</td>
@@ -3529,8 +3454,8 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX-033408-P</td>
-    <td>GIBBONS, MARGARET JEAN FARRELL</td>
+    <td>TX-033408-Q</td>
+    <td>HURLEY FOUNDATION #7/0388301, ED & GLADYS</td>
     <td>OIL & GAS LEASE</td>
     <td>02/11/1999</td>
     <td>SHELBY</td>
@@ -3539,8 +3464,8 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX-033408-Q</td>
-    <td>HURLEY FOUNDATION #7/0388301, ED & GLADYS</td>
+    <td>TX-033408-R</td>
+    <td>FLOREY JR, JOHN VINSON</td>
     <td>OIL & GAS LEASE</td>
     <td>01/25/1999</td>
     <td>SHELBY</td>
@@ -3549,8 +3474,8 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX-033408-R</td>
-    <td>FLOREY JR, JOHN VINSON</td>
+    <td>TX-033408-S</td>
+    <td>HURLEY ENDOWMENT FOUNDATION, GLADYS, & ED E</td>
     <td>OIL & GAS LEASE</td>
     <td>03/23/1999</td>
     <td>SHELBY</td>
@@ -3559,23 +3484,13 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX-033408-S</td>
-    <td>HURLEY ENDOWMENT FOUNDATION, GLADYS, & ED E</td>
+    <td>TX-033419-A</td>
+    <td>HOLLINS, CAROLINE SKIPPER</td>
     <td>OIL & GAS LEASE</td>
     <td>01/14/1999</td>
     <td>SHELBY</td>
     <td>859</td>
     <td>364</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>TX-033419-A</td>
-    <td>HOLLINS, CAROLINE SKIPPER</td>
-    <td>OIL & GAS LEASE</td>
-    <td>12/30/1998</td>
-    <td>SHELBY</td>
-    <td>854</td>
-    <td>232</td>
     <td></td>
   </tr>
   <tr>
@@ -3585,12 +3500,22 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td>12/30/1998</td>
     <td>SHELBY</td>
     <td>854</td>
-    <td>234</td>
+    <td>232</td>
     <td></td>
   </tr>
   <tr>
     <td>TX-033419-C</td>
     <td>RUSSELL, ROY FERRELL</td>
+    <td>OIL & GAS LEASE</td>
+    <td>12/30/1998</td>
+    <td>SHELBY</td>
+    <td>854</td>
+    <td>234</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>TX-033427-</td>
+    <td>BREAZEALE, CLARA</td>
     <td>OIL & GAS LEASE</td>
     <td>01/11/1999</td>
     <td>SHELBY</td>
@@ -3599,8 +3524,8 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX-033427-</td>
-    <td>BREAZEALE, CLARA</td>
+    <td>TX-033458-A</td>
+    <td>BAGGETT, JOHN T</td>
     <td>OIL & GAS LEASE</td>
     <td>01/25/1999</td>
     <td>SHELBY</td>
@@ -3609,8 +3534,8 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX-033458-A</td>
-    <td>BAGGETT, JOHN T</td>
+    <td>TX-033460-</td>
+    <td>WILBURN, DOROTHY E</td>
     <td>OIL & GAS LEASE</td>
     <td>01/12/1999</td>
     <td>SHELBY</td>
@@ -3619,8 +3544,8 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX-033460-</td>
-    <td>WILBURN, DOROTHY E</td>
+    <td>TX-033462-A</td>
+    <td>GATEWOOD SR, W.P.</td>
     <td>OIL & GAS LEASE</td>
     <td>12/22/1998</td>
     <td>SHELBY</td>
@@ -3629,8 +3554,8 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX-033462-A</td>
-    <td>GATEWOOD SR, W.P</td>
+    <td>TX-033462-B</td>
+    <td>ADAMS, STEVE H</td>
     <td>OIL & GAS LEASE</td>
     <td>12/21/1998</td>
     <td>SHELBY</td>
@@ -3639,8 +3564,8 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX-033462-B</td>
-    <td>ADAMS, STEVE H</td>
+    <td>TX-033462-C</td>
+    <td>GATEWOOD SR, CLAUDE W</td>
     <td>OIL & GAS LEASE</td>
     <td>12/22/1998</td>
     <td>SHELBY</td>
@@ -3649,8 +3574,8 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX-033462-C</td>
-    <td>GATEWOOD SR, CLAUDE W</td>
+    <td>TX-033476-A</td>
+    <td>STEVENS, ZANDRA</td>
     <td>OIL & GAS LEASE</td>
     <td>01/15/1999</td>
     <td>SHELBY</td>
@@ -3659,8 +3584,8 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX-033476-A</td>
-    <td>STEVENS, ZANDRA</td>
+    <td>TX-033490-</td>
+    <td>DAVIS, DEXTER</td>
     <td>OIL & GAS LEASE</td>
     <td>01/18/1999</td>
     <td>SHELBY</td>
@@ -3669,8 +3594,8 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX-033490-</td>
-    <td>DAVIS, DEXTER</td>
+    <td>TX-033496-</td>
+    <td>DUKE6, JOE G.</td>
     <td>OIL & GAS LEASE</td>
     <td>01/06/1999</td>
     <td>SHELBY</td>
@@ -3679,23 +3604,13 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX-033496-</td>
-    <td>DUKE6, JOE G.</td>
+    <td>TX-033504-</td>
+    <td>MENEFE, PATRICIA TYSON</td>
     <td>OIL & GAS LEASE</td>
     <td>01/13/1999</td>
     <td>SHELBY</td>
     <td>855</td>
     <td>503</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>TX-033504-</td>
-    <td>MENEFE, PATRICIA TYSON</td>
-    <td>OIL & GAS LEASE</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
     <td></td>
   </tr>
 </table>
@@ -4017,7 +3932,9 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
   </tr>
 </table>
 EXHIBIT "A"
-Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effective 12/31/1999 by and between MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
+Attached to and made a part of that certain
+ASSIGNMENT AND QUITCLAIM dated effective 12/31/1999 by and between
+MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
 
 <table>
   <tr>
@@ -4031,7 +3948,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <th>DOC #</th>
   </tr>
   <tr>
-    <td>TX -033704-A</td>
+    <td>TX-033704-A</td>
     <td>POLLEY JR, O H</td>
     <td>OIL & GAS LEASE</td>
     <td>05/20/1999</td>
@@ -4041,7 +3958,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX -033704-B</td>
+    <td>TX-033704-B</td>
     <td>REED TESTAMENTARY TRUST, OLIVE POLLEY</td>
     <td>OIL & GAS LEASE</td>
     <td>05/20/1999</td>
@@ -4051,7 +3968,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX -033704-C</td>
+    <td>TX-033704-C</td>
     <td>MADELEY, MARY POLLEY</td>
     <td>OIL & GAS LEASE</td>
     <td>05/20/1999</td>
@@ -4061,7 +3978,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX -033736-A</td>
+    <td>TX-033736-A</td>
     <td>MOORE, OZELLA</td>
     <td>OIL & GAS LEASE</td>
     <td>05/05/1999</td>
@@ -4071,7 +3988,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX -033736-B</td>
+    <td>TX-033736-B</td>
     <td>CARTWRIGHT, THOMAS EARL</td>
     <td>OIL & GAS LEASE</td>
     <td>06/09/1999</td>
@@ -4081,7 +3998,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX -033768-A</td>
+    <td>TX-033768-A</td>
     <td>CAMPBELL, MONA JONES</td>
     <td>OIL & GAS LEASE</td>
     <td>08/08/1999</td>
@@ -4091,17 +4008,17 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX -033772-A</td>
+    <td>TX-033772-A</td>
     <td>RATCLIFF, SHARON BRINSON</td>
     <td>OIL & GAS LEASE</td>
-    <td>05/13/1999</td>
+    <td>05/12/1999</td>
     <td>SHELBY</td>
     <td>861</td>
     <td>782</td>
     <td></td>
   </tr>
   <tr>
-    <td>TX -033790-A</td>
+    <td>TX-033790-A</td>
     <td>KRAEMER, CHARLENE</td>
     <td>OIL & GAS LEASE</td>
     <td>07/14/1999</td>
@@ -4111,7 +4028,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX -033790-C</td>
+    <td>TX-033790-C</td>
     <td>CARTWRIGHT, BOBIE</td>
     <td>OIL & GAS LEASE</td>
     <td>07/14/1999</td>
@@ -4121,7 +4038,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX -033791-</td>
+    <td>TX-033791-</td>
     <td>Z A P MINERALS L P</td>
     <td>OIL & GAS LEASE</td>
     <td>06/24/1999</td>
@@ -4131,7 +4048,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX -033792-</td>
+    <td>TX-033792-</td>
     <td>BRIDGES, W A</td>
     <td>OIL & GAS LEASE</td>
     <td>07/12/1999</td>
@@ -4141,7 +4058,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX -033814-A</td>
+    <td>TX-033814-A</td>
     <td>BARCHERS, WILLIAM A</td>
     <td>OIL & GAS LEASE</td>
     <td>07/27/1999</td>
@@ -4151,7 +4068,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX -033815-A</td>
+    <td>TX-033815-A</td>
     <td>PANEK, RICHARD E</td>
     <td>OIL & GAS LEASE</td>
     <td>07/26/1999</td>
@@ -4161,7 +4078,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX -033815-B</td>
+    <td>TX-033815-B</td>
     <td>PARKER, DORIS</td>
     <td>OIL & GAS LEASE</td>
     <td>08/26/1999</td>
@@ -4171,7 +4088,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX -033815-C</td>
+    <td>TX-033815-C</td>
     <td>BROWN, JOHNNIE RUTH</td>
     <td>OIL & GAS LEASE</td>
     <td>08/26/1999</td>
@@ -4181,7 +4098,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX -033815-D</td>
+    <td>TX-033815-D</td>
     <td>MASSEY, CECIL E</td>
     <td>OIL & GAS LEASE</td>
     <td>08/26/1999</td>
@@ -4191,7 +4108,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX -033825-</td>
+    <td>TX-033825-</td>
     <td>SPARKS, PAUL</td>
     <td>OIL & GAS LEASE</td>
     <td>08/12/1999</td>
@@ -4201,7 +4118,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX -033826-A</td>
+    <td>TX-033826-A</td>
     <td>WAGGONER, MARIE</td>
     <td>OIL & GAS LEASE</td>
     <td>08/11/1999</td>
@@ -4211,7 +4128,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX -033826-B</td>
+    <td>TX-033826-B</td>
     <td>MORRIS, IRIS</td>
     <td>OIL & GAS LEASE</td>
     <td>08/11/1999</td>
@@ -4221,8 +4138,8 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX -033826-C</td>
-    <td>HOOPER, AUVY NELL</td>
+    <td>TX-033826-C</td>
+    <td>HOOPER, AUYY NELL</td>
     <td>OIL & GAS LEASE</td>
     <td>08/11/1999</td>
     <td>SHELBY</td>
@@ -4231,7 +4148,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX -033827-</td>
+    <td>TX-033827-</td>
     <td>ANDERSON ESTATE, MARSHALL LEE</td>
     <td>OIL & GAS LEASE</td>
     <td>08/05/1999</td>
@@ -4241,7 +4158,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX -033840-A</td>
+    <td>TX-033840-A</td>
     <td>WILBURN, ELLIS L</td>
     <td>OIL & GAS LEASE</td>
     <td>08/31/1999</td>
@@ -4251,7 +4168,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX -033841-A</td>
+    <td>TX-033841-A</td>
     <td>CARTER, KIT D</td>
     <td>OIL & GAS LEASE</td>
     <td>08/24/1999</td>
@@ -4261,7 +4178,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX -033841-B</td>
+    <td>TX-033841-B</td>
     <td>DAVID, RUTH MARIE YATES</td>
     <td>OIL & GAS LEASE</td>
     <td>08/24/1999</td>
@@ -4271,7 +4188,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX -033841-C</td>
+    <td>TX-033841-C</td>
     <td>YATES, JACK J</td>
     <td>OIL & GAS LEASE</td>
     <td>08/24/1999</td>
@@ -4281,7 +4198,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX -033841-D</td>
+    <td>TX-033841-D</td>
     <td>WEAVER, MERLINE YATES</td>
     <td>OIL & GAS LEASE</td>
     <td>08/24/1999</td>
@@ -4291,7 +4208,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX -033841-E</td>
+    <td>TX-033841-E</td>
     <td>YATES, ALVIE C</td>
     <td>OIL & GAS LEASE</td>
     <td>08/24/1999</td>
@@ -4301,7 +4218,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX -033841-F</td>
+    <td>TX-033841-F</td>
     <td>YATES, JIMMY CLYDE</td>
     <td>OIL & GAS LEASE</td>
     <td>08/24/1999</td>
@@ -4311,7 +4228,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX -033841-G</td>
+    <td>TX-033841-G</td>
     <td>CARTER, JAMES DOYLE</td>
     <td>OIL & GAS LEASE</td>
     <td>08/20/1999</td>
@@ -4321,8 +4238,8 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
     <td></td>
   </tr>
   <tr>
-    <td>TX -033842-A</td>
-    <td>CARTER, MAG T</td>
+    <td>TX-033842-A</td>
+    <td>CARTER, MAC T</td>
     <td>OIL & GAS LEASE</td>
     <td>08/24/1999</td>
     <td>SHELBY</td>
@@ -4333,7 +4250,7 @@ Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effec
 </table>
 EXHIBIT "A"
 Attached to and made a part of that certain
-ASSIGNMENT AND QUITCLAIM dated 12/31/1999 by and between
+ASSIGNMENT AND QUITCLAIM dated effective 12/31/1999 by and between
 MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
 
 <table>
@@ -4409,7 +4326,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
   </tr>
   <tr>
     <td>TX-033845-B</td>
-    <td>HOOPER, AUVY NELL</td>
+    <td>HOOPER, AUYY NELL</td>
     <td>OIL & GAS LEASE</td>
     <td>08/26/1999</td>
     <td>SHELBY</td>
@@ -4464,7 +4381,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>08/05/1999</td>
     <td>SHELBY</td>
     <td>866</td>
-    <td>251</td>
+    <td>246</td>
     <td></td>
   </tr>
   <tr>
@@ -4474,7 +4391,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>09/01/1999</td>
     <td>SHELBY</td>
     <td>866</td>
-    <td>246</td>
+    <td>251</td>
     <td></td>
   </tr>
   <tr>
@@ -4511,7 +4428,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-033857-A</td>
     <td>SHINE, CAROL ANN</td>
     <td>OIL & GAS LEASE</td>
-    <td>09/14/1999</td>
+    <td>09/01/1999</td>
     <td>SHELBY</td>
     <td>867</td>
     <td>107</td>
@@ -4521,7 +4438,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-033857-B</td>
     <td>MCBRIDE, L R</td>
     <td>OIL & GAS LEASE</td>
-    <td>09/14/1999</td>
+    <td>09/01/1999</td>
     <td>SHELBY</td>
     <td>867</td>
     <td>110</td>
@@ -4531,7 +4448,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-033866-A</td>
     <td>RUDD SR, JAMES D</td>
     <td>OIL & GAS LEASE</td>
-    <td>09/14/1999</td>
+    <td>09/01/1999</td>
     <td>SHELBY</td>
     <td>867</td>
     <td>115</td>
@@ -4541,7 +4458,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-033866-B</td>
     <td>JERNIGAN, IVIS MAE</td>
     <td>OIL & GAS LEASE</td>
-    <td>09/14/1999</td>
+    <td>09/01/1999</td>
     <td>SHELBY</td>
     <td>867</td>
     <td>118</td>
@@ -4551,7 +4468,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-033866-C</td>
     <td>DAVIS, REX E</td>
     <td>OIL & GAS LEASE</td>
-    <td>09/14/1999</td>
+    <td>09/01/1999</td>
     <td>SHELBY</td>
     <td>867</td>
     <td>122</td>
@@ -4561,7 +4478,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-033870-A</td>
     <td>EAVES, ROBBIE MAURICE</td>
     <td>OIL & GAS LEASE</td>
-    <td>09/14/1999</td>
+    <td>09/01/1999</td>
     <td>SHELBY</td>
     <td>867</td>
     <td>126</td>
@@ -4571,27 +4488,27 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-033871-A</td>
     <td>EAVES, RENNY F</td>
     <td>OIL & GAS LEASE</td>
-    <td>09/14/1999</td>
-    <td>SHELBY</td>
-    <td>867</td>
-    <td>130</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>TX-033871-B</td>
-    <td>STEWART, Verna Ponder</td>
-    <td>OIL & GAS LEASE</td>
-    <td>09/06/1999</td>
+    <td>09/01/1999</td>
     <td>SHELBY</td>
     <td>867</td>
     <td>350</td>
     <td></td>
   </tr>
   <tr>
+    <td>TX-033871-B</td>
+    <td>STEWART, Verna Ponder</td>
+    <td>OIL & GAS LEASE</td>
+    <td>09/01/1999</td>
+    <td>SHELBY</td>
+    <td>867</td>
+    <td>130</td>
+    <td></td>
+  </tr>
+  <tr>
     <td>TX-033871-C</td>
     <td>SHINE, CAROL ANN</td>
     <td>OIL & GAS LEASE</td>
-    <td>09/06/1999</td>
+    <td>09/01/1999</td>
     <td>SHELBY</td>
     <td>867</td>
     <td>134</td>
@@ -4619,12 +4536,12 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
   </tr>
   <tr>
     <td>TX-033874-A</td>
-    <td>McCRRAW, BETTY</td>
+    <td>McCRaW, BETTY</td>
     <td>OIL & GAS LEASE</td>
     <td>09/06/1999</td>
     <td>SHELBY</td>
     <td>867</td>
-    <td>130</td>
+    <td>350</td>
     <td></td>
   </tr>
   <tr>
@@ -4634,12 +4551,12 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>09/06/1999</td>
     <td>SHELBY</td>
     <td>867</td>
-    <td>134</td>
+    <td>130</td>
     <td></td>
   </tr>
   <tr>
     <td>TX-033874-C</td>
-    <td>HOWE, DENA'C</td>
+    <td>HOWE, DENA C</td>
     <td>OIL & GAS LEASE</td>
     <td>09/06/1999</td>
     <td>SHELBY</td>
@@ -4649,9 +4566,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
   </tr>
 </table>
 EXHIBIT "A"
-Attached to and made a part of that certain
-ASSIGNMENT AND QUITCLAIM dated effective 12/31/1999 by and between
-MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
+Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effective 12/31/1999 by and between MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
 
 <table>
   <tr>
@@ -4748,7 +4663,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-033895-B</td>
     <td>DAVIS JR, T O</td>
     <td>OIL & GAS LEASE</td>
-    <td>09/23/1999</td>
+    <td>09/14/1999</td>
     <td>SHELBY</td>
     <td></td>
     <td></td>
@@ -4758,7 +4673,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-033897-A</td>
     <td>JOHNSON, ROYCE L</td>
     <td>OIL & GAS LEASE</td>
-    <td>09/14/1999</td>
+    <td>09/15/1999</td>
     <td>SHELBY</td>
     <td></td>
     <td></td>
@@ -4768,7 +4683,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-033897-B</td>
     <td>RUDD, LESTER</td>
     <td>OIL & GAS LEASE</td>
-    <td>09/15/1999</td>
+    <td>09/24/1999</td>
     <td>SHELBY</td>
     <td></td>
     <td></td>
@@ -4778,7 +4693,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-033898-A</td>
     <td>BOOK, CURTIS C</td>
     <td>OIL & GAS LEASE</td>
-    <td>09/24/1999</td>
+    <td>09/09/1999</td>
     <td>SHELBY</td>
     <td></td>
     <td></td>
@@ -4788,7 +4703,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-033898-B</td>
     <td>SIMMONS, CHARLES W</td>
     <td>OIL & GAS LEASE</td>
-    <td>09/09/1999</td>
+    <td>09/20/1999</td>
     <td>SHELBY</td>
     <td></td>
     <td></td>
@@ -4808,7 +4723,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-033898-D</td>
     <td>MCSWAIN, CECELIA</td>
     <td>OIL & GAS LEASE</td>
-    <td>09/20/1999</td>
+    <td>09/24/1999</td>
     <td>SHELBY</td>
     <td></td>
     <td></td>
@@ -4818,7 +4733,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-033898-E</td>
     <td>BOOK JR, FRED A</td>
     <td>OIL & GAS LEASE</td>
-    <td>09/24/1999</td>
+    <td>09/16/1999</td>
     <td>SHELBY</td>
     <td></td>
     <td></td>
@@ -4828,7 +4743,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-033899-A</td>
     <td>CASEY, BILLY JEAN RUDD</td>
     <td>OIL & GAS LEASE</td>
-    <td>09/16/1999</td>
+    <td>09/15/1999</td>
     <td>SHELBY</td>
     <td></td>
     <td></td>
@@ -4838,7 +4753,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-033900-</td>
     <td>RUDD, BILLY B</td>
     <td>OIL & GAS LEASE</td>
-    <td>09/15/1999</td>
+    <td>09/14/1999</td>
     <td>SHELBY</td>
     <td></td>
     <td></td>
@@ -4888,7 +4803,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-033901-E</td>
     <td>FULTS, IVY</td>
     <td>OIL & GAS LEASE</td>
-    <td>09/14/1999</td>
+    <td>09/15/1999</td>
     <td>SHELBY</td>
     <td></td>
     <td></td>
@@ -4898,7 +4813,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-033908-A</td>
     <td>NICHOLS ESTATE, ALTON</td>
     <td>OIL & GAS LEASE</td>
-    <td>09/15/1999</td>
+    <td>09/21/1999</td>
     <td>SHELBY</td>
     <td></td>
     <td></td>
@@ -4908,7 +4823,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-033909-A</td>
     <td>GOING, WILLIAM-D</td>
     <td>OIL & GAS LEASE</td>
-    <td>09/21/1999</td>
+    <td>09/22/1999</td>
     <td>SHELBY</td>
     <td></td>
     <td></td>
@@ -4918,7 +4833,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-033916-</td>
     <td>PIGG, JULIA ELIZABETH</td>
     <td>OIL & GAS LEASE</td>
-    <td>09/22/1999</td>
+    <td>09/27/1999</td>
     <td>SHELBY</td>
     <td></td>
     <td></td>
@@ -4928,7 +4843,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX-033917-A</td>
     <td>YOUNGBLOOD, CORA</td>
     <td>OIL & GAS LEASE</td>
-    <td>09/27/1999</td>
+    <td>09/28/1999</td>
     <td>SHELBY</td>
     <td></td>
     <td></td>
@@ -4946,7 +4861,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
   </tr>
   <tr>
     <td>TX-033918-B</td>
-    <td>HOPPER, AUYY NELL</td>
+    <td>HOPPER, AUVEY NELL</td>
     <td>OIL & GAS LEASE</td>
     <td>09/28/1999</td>
     <td>SHELBY</td>
@@ -5015,7 +4930,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX -033920-A</td>
     <td>WILLINGHAM, CLARLCIE R</td>
     <td>OIL & GAS LEASE</td>
-    <td>10/01/1999</td>
+    <td>09/22/1999</td>
     <td>SHELBY</td>
     <td></td>
   </tr>
@@ -5031,7 +4946,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX -033923-</td>
     <td>PULLEN, JIMMY BURGESS</td>
     <td>OIL & GAS LEASE</td>
-    <td>10/05/1999</td>
+    <td>10/01/1999</td>
     <td>SHELBY</td>
     <td></td>
   </tr>
@@ -5039,7 +4954,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX -033925-A</td>
     <td>DILLARD, MILDRED</td>
     <td>OIL & GAS LEASE</td>
-    <td>10/06/1999</td>
+    <td>10/05/1999</td>
     <td>SHELBY</td>
     <td></td>
   </tr>
@@ -5047,7 +4962,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX -033926-</td>
     <td>DUBOSE, KENNETH</td>
     <td>OIL & GAS LEASE</td>
-    <td>09/14/1999</td>
+    <td>10/06/1999</td>
     <td>SHELBY</td>
     <td></td>
   </tr>
@@ -5055,7 +4970,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX -033927-A</td>
     <td>WILKINS, RONNIE G</td>
     <td>OIL & GAS LEASE</td>
-    <td>09/21/1999</td>
+    <td>09/14/1999</td>
     <td>SHELBY</td>
     <td></td>
   </tr>
@@ -5063,7 +4978,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX -033931-A</td>
     <td>LINDLEY, BARBARA</td>
     <td>OIL & GAS LEASE</td>
-    <td>10/04/1999</td>
+    <td>09/21/1999</td>
     <td>SHELBY</td>
     <td></td>
   </tr>
@@ -5071,7 +4986,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX -033932-A</td>
     <td>WARR, DONNA</td>
     <td>OIL & GAS LEASE</td>
-    <td>10/07/1999</td>
+    <td>10/04/1999</td>
     <td>SHELBY</td>
     <td></td>
   </tr>
@@ -5079,7 +4994,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX -033932-B</td>
     <td>KEATING, VIRGINIA SMITH</td>
     <td>OIL & GAS LEASE</td>
-    <td>10/01/1999</td>
+    <td>10/07/1999</td>
     <td>SHELBY</td>
     <td></td>
   </tr>
@@ -5087,7 +5002,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX -033937-A</td>
     <td>REAVLEY, FLORENCE WILSON</td>
     <td>OIL & GAS LEASE</td>
-    <td>10/11/1999</td>
+    <td>10/01/1999</td>
     <td>SHELBY</td>
     <td></td>
   </tr>
@@ -5095,7 +5010,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX -033938-B</td>
     <td>GILBERT, TRAMARSHA O'REAR</td>
     <td>OIL & GAS LEASE</td>
-    <td>10/19/1999</td>
+    <td>10/11/1999</td>
     <td>SHELBY</td>
     <td></td>
   </tr>
@@ -5103,7 +5018,7 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
     <td>TX -033941-A</td>
     <td>TATUM, LAVERNE MASSEY</td>
     <td>OIL & GAS LEASE</td>
-    <td>10/01/1999</td>
+    <td>10/19/1999</td>
     <td>SHELBY</td>
     <td></td>
   </tr>
@@ -5117,7 +5032,9 @@ MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
   </tr>
 </table>
 EXHIBIT "B"
-Attached to and made a part of that certain ASSIGNMENT AND QUITCLAIM dated effective 12/31/1999 by and between MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
+Attached to and made a part of that certain
+ASSIGNMENT AND QUITCLAIM dated effective 12/31/1999 by and between
+MARATHON OIL COMPANY (Assignor) and MARATHON OIL (EAST TEXAS) LP (Assignee)
 
 <table>
   <tr>

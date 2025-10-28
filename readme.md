@@ -1,9 +1,5 @@
-Absolutely — here’s a complete, production-grade **`README.md`** you can drop straight into your repo.
-It’s written in a clear, developer-facing tone and covers setup, architecture, workflow, and QA guidance — perfect for onboarding others or documenting your own stack.
 
----
-
-# 🧠 Legal LLM OCR → RAG Pipeline (OlmOCR + Docling + Haystack)
+# Legal LLM OCR → RAG Pipeline (OlmOCR + Docling + Haystack)
 
 > End-to-end system for transforming scanned legal documents (deeds, assignments, exhibits)
 > into a searchable, layout-preserving Retrieval-Augmented Generation (RAG) knowledge base.
@@ -49,7 +45,7 @@ into a **structured, queryable corpus** using:
 Place raw PDFs in:
 
 ```
-app/samples/
+app/pdf_input
 ```
 
 ### 2️⃣ OCR Extraction
@@ -57,7 +53,7 @@ app/samples/
 Run OlmOCR to generate Markdown + JSONL:
 
 ```bash
-python olmocr_pipeline/process_pdf.py app/samples/*.pdf --summary --qa
+python olmocr_pipeline/process_pdf.py app/pdf_input/file_name.pdf --summary --qa
 ```
 
 Output:
