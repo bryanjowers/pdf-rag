@@ -4,7 +4,20 @@
 > **Production-ready** document processing pipeline for legal documents
 > Supports PDFs (scanned + digital), Word, Excel, and images with deterministic output
 
-**Status:** ✅ Phase 2 Complete (100%) | **Environment:** Headless VM with GCS + NVIDIA L4 GPUs
+**Status:** ✅ Phase 2 Complete (100%) | **Next:** Phase 3 (RAG Pipeline) | **Environment:** Headless VM with GCS + NVIDIA L4 GPUs
+
+---
+
+## 📋 Project Planning & Documentation
+
+All planning documents, roadmaps, and technical specifications are organized in **[docs/planning/](docs/planning/)**
+
+**Quick Links:**
+- 🚀 **[Phase 3 Roadmap](docs/planning/PHASE3_READY.md)** - Start here! Executive summary & next actions
+- 📋 **[Complete Plan](docs/planning/PHASE3_PLAN.md)** - Detailed 3-demo roadmap (5-6 months)
+- 🔧 **[Schema v2.3.0](docs/planning/SCHEMA_V2.3.0.md)** - Technical specification (bbox + entities)
+- 🛠️ **[Infrastructure Setup](docs/planning/SETUP_INFRASTRUCTURE.md)** - Qdrant + LangSmith setup guide
+- 📚 **[All Planning Docs](docs/planning/INDEX.md)** - Complete index with navigation guide
 
 ---
 
