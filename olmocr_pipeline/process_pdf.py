@@ -1,13 +1,25 @@
 #!/usr/bin/env python3
 """
-process_pdf.py — Modernized OlmOCR-2 + QA pipeline (Milestone #2)
-Runs the OlmOCR CLI once for batch processing with both HTML and Markdown output.
-Optimized for NVIDIA L4 GPUs and browser-based QA.
+process_pdf.py — LEGACY Phase 1 OlmOCR-2 pipeline (DEPRECATED)
 
-Usage:
+⚠️  DEPRECATION NOTICE:
+    This script is from Phase 1 and processes ONLY scanned PDFs using OlmOCR-2.
+    For Phase 2+ (multi-format support), use process_documents.py instead:
+
+    NEW: python process_documents.py --auto --batch-size 10
+    OLD: python process_pdf.py --auto --batch-size 5
+
+    Phase 2 supports: PDF (digital/scanned), DOCX, XLSX, images
+    Phase 1 supports: PDF (scanned only)
+
+This script is kept for backwards compatibility and specific Phase 1 use cases:
+  - --merge flag (combine per-page JSONL → single HTML/MD)
+  - Direct OlmOCR-2 CLI invocation for debugging
+
+Usage (Legacy):
   python process_pdf.py app/samples/*.pdf --summary
   python process_pdf.py app/samples/*.pdf --preprocess --summary
-  python process_pdf.py app/samples/*.pdf --qa
+  python process_pdf.py app/samples/*.pdf --merge
 """
 
 import argparse
@@ -302,6 +314,14 @@ Note: This script runs on a headless VM - browser QA features have been removed.
                         help=f"Parallel workers for OlmOCR CLI (default: {DEFAULT_WORKERS})")
 
     args = parser.parse_args()
+
+    # ⚠️ DEPRECATION WARNING
+    print("=" * 70)
+    print("⚠️  DEPRECATION WARNING: This is a Phase 1 legacy script")
+    print("   For Phase 2+ multi-format support, use process_documents.py instead:")
+    print("   python olmocr_pipeline/process_documents.py --auto --batch-size 10")
+    print("=" * 70)
+    print()
 
     # Validate arguments
     if args.watch and not args.auto:

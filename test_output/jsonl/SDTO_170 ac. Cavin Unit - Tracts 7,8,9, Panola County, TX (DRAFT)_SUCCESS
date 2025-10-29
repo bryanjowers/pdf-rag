@@ -1,0 +1,8 @@
+{
+  "timestamp": "2025-10-29T03:28:51.369625Z",
+  "file_path": "/home/bryanjowers/pdf-rag/test_output/jsonl/SDTO_170 ac. Cavin Unit - Tracts 7,8,9, Panola County, TX (DRAFT).jsonl",
+  "file_hash": "dd6588894bb1d8ae87e8521da705fcc82c16a2d84ecda7fe168ba47a37d4fec8",
+  "chunks": 7,
+  "processor": "docling",
+  "processing_duration_ms": 4400
+}

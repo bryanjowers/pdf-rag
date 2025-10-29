@@ -10,3 +10,7 @@ torch          # optional if conda already provides it
 transformers   # OlmOCR dependency
 filelock>=3.13.0   # Single-instance locking for batch processing
 psutil>=5.9.0      # Process management utilities
+PyYAML>=6.0        # Configuration management
+openpyxl>=3.1.0    # Excel file processing
+python-docx>=1.0.0 # Word document processing (fallback)
+pandas>=2.0.0      # CSV/XLSX data handling

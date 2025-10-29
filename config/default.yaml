@@ -1,0 +1,160 @@
+# Legal LLM RAG Pipeline Configuration
+# Phase 2: Multi-Format Ingestion
+# Version: 2.2.0
+
+metadata:
+  config_version: "2.2.0"
+  # config_hash will be auto-computed at runtime
+
+# PDF Classification thresholds
+classification:
+  # Digital vs Scanned PDF routing
+  percent_digital_cutoff: 0.75  # ≥75% text layer → digital, else scanned
+
+  # Confidence thresholds
+  confidence_low_min: 0.65      # Below this = high confidence scanned
+  confidence_low_max: 0.85      # Above this = high confidence digital
+
+  # 🚨 HARD LIMIT: NO PDF over this page count will be processed
+  max_pages_absolute: 200       # Safety guardrail - prevents GPU exhaustion
+
+  # Fallback thresholds
+  max_pages_for_fallback: 1000  # Skip OlmOCR-2 fallback beyond this (quarantine instead)
+  min_text_yield_per_page: 100  # If Docling produces <100 chars/page, trigger fallback
+
+# Text chunking parameters
+chunking:
+  token_target: 1400     # Target chunk size
+  token_min: 800         # Minimum acceptable chunk size
+  token_max: 2000        # Maximum acceptable chunk size
+
+  # QA thresholds
+  qa_warn_below: 700     # Warn if chunk has fewer tokens
+  qa_warn_above: 2200    # Warn if chunk exceeds this
+  qa_warn_threshold: 0.05  # Warn if >5% of chunks out of range
+  qa_fail_threshold: 0.10  # Fail batch if >10% out of range
+
+# XLSX/CSV processing
+xlsx:
+  # Sheet size thresholds
+  rows_small_threshold: 5000    # Sheets ≤ this → single chunk
+  cols_small_threshold: 25      # Sheets ≤ this width → single chunk
+
+  # Chunking parameters for large sheets
+  max_rows_per_chunk: 2000      # Hard cap on chunk size
+
+  # Table boundary detection
+  blank_row_threshold: 0.90     # ≥90% empty cells = blank row
+  schema_change_threshold: 0.30 # >30% column difference = new table
+  header_detection_threshold: 0.80  # ≥80% non-numeric = likely header
+
+  # Processing options
+  skip_hidden_sheets: true
+  expand_merged_cells: true
+  evaluate_formulas: true       # Compute formula values (don't preserve formula text)
+
+# Table handling
+tables:
+  preserve_format: true          # Maintain Markdown table structure
+  max_rows_per_chunk: 2000       # Split large tables at this row count
+  include_footnotes: true        # Extract text below tables that looks like notes
+  expand_merged_cells: true      # Repeat merged cell text across span
+
+  # Footnote detection patterns (case-insensitive)
+  footnote_indicators:
+    - "^"      # Superscript numbers: ^1, ^2
+    - "*"      # Asterisk markers
+    - "†"      # Dagger symbols
+    - "‡"      # Double dagger
+    - "[1]"    # Bracketed numbers
+    - "(a)"    # Parenthetical letters
+    - "Note:"  # Explicit note markers
+
+  # Validation
+  check_column_consistency: true  # Verify all rows have same column count
+  max_footnote_scan_lines: 10     # Look ahead this many lines after table
+
+# Processor settings
+processors:
+  # OlmOCR-2 settings
+  olmocr:
+    model_id: "allenai/olmOCR-2-7B-1025-FP8"
+    target_image_dim: "1288"      # Optimized for L4 GPUs
+    gpu_memory_utilization: 0.8   # 80% GPU memory
+    default_workers: 6
+    default_batch_size: 5
+
+  # Docling settings (placeholder - adjust based on actual API)
+  docling:
+    api_timeout: 300              # 5 minute timeout
+    enable_table_detection: true
+    enable_section_detection: true
+    output_format: "markdown"
+
+  # Fallback settings
+  retry_attempts: 2               # Retry count for transient errors
+  retry_delay_seconds: 5          # Wait between retries
+
+# Output schema
+schema:
+  version: "2.2.0"
+
+  # Required JSONL fields
+  required_fields:
+    - id
+    - doc_id
+    - chunk_index
+    - text
+    - attrs
+    - source
+    - metadata
+
+  # Metadata fields to include
+  metadata_fields:
+    - schema_version
+    - file_type
+    - mime_type
+    - hash_input_sha256
+    - processor
+    - processor_version
+    - processed_at
+    - batch_id
+    - processing_duration_ms
+    - confidence_score
+    - warnings
+
+# Storage paths (relative to GCS mount base)
+storage:
+  gcs_mount_base: "/mnt/gcs/legal-ocr-results"
+
+  # Input/output directories
+  input_bucket: "/mnt/gcs/legal-ocr-pdf-input"
+  rag_staging: "rag_staging"
+
+  # Output subdirectories
+  html_output: "rag_staging/html"
+  markdown_output: "rag_staging/markdown"
+  jsonl_output: "rag_staging/jsonl"
+  log_dir: "logs"
+  report_dir: "reports"
+  manifest_dir: "manifests"
+  inventory_dir: "inventory"
+  quarantine_dir: "quarantine"
+
+  # Lock file
+  lock_file: ".process_documents.lock"
+
+  # Atomic write settings
+  temp_suffix: ".tmp"
+  success_marker: "_SUCCESS"
+
+# Watch mode settings
+watch:
+  default_interval_seconds: 60
+  verify_mount_health: true
+
+# Logging
+logging:
+  level: "INFO"
+  format: "structured_csv"
+  include_timestamps: true
