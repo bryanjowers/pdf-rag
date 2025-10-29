@@ -18,9 +18,12 @@ from datetime import datetime
 # ---------------------------------------------------------------------
 # CONFIG
 # ---------------------------------------------------------------------
-OUT_DIR_HTML = Path("rag_staging/html")
-OUT_DIR_MD = Path("rag_staging/markdown_merged")
-REPORT_PATH = Path("rag_staging/reports/ocr_merge_summary.json")
+GCS_MOUNT_BASE = Path("/mnt/gcs/legal-ocr-results")
+RAG_STAGING_DIR = GCS_MOUNT_BASE / "rag_staging"
+
+OUT_DIR_HTML = RAG_STAGING_DIR / "html"
+OUT_DIR_MD = RAG_STAGING_DIR / "markdown_merged"
+REPORT_PATH = RAG_STAGING_DIR / "reports" / "ocr_merge_summary.json"
 
 for p in [OUT_DIR_HTML, OUT_DIR_MD, REPORT_PATH.parent]:
     p.mkdir(parents=True, exist_ok=True)
@@ -31,13 +34,16 @@ def merge_jsonl_to_html(jsonl_path: Path) -> tuple[str, int, int, int]:
     pages, empty_count, char_count = [], 0, 0
 
     with open(jsonl_path, "r", encoding="utf-8") as f:
-        for line in f:
+        for line_num, line in enumerate(f, 1):
             try:
                 record = json.loads(line)
             except json.JSONDecodeError:
                 continue
-            text = record.get("response", "").strip()
-            page_num = record.get("page_index", None)
+
+            # Support both old format (per-page) and new format (per-document)
+            text = record.get("response", record.get("text", "")).strip()
+            page_num = record.get("page_index", line_num)
+
             if not text:
                 empty_count += 1
                 continue
@@ -69,13 +75,16 @@ def merge_jsonl_to_markdown(jsonl_path: Path) -> tuple[str, int, int, int]:
     """Merge JSONL file to Markdown (preserving page headings)."""
     pages, empty_count, char_count = [], 0, 0
     with open(jsonl_path, "r", encoding="utf-8") as f:
-        for line in f:
+        for line_num, line in enumerate(f, 1):
             try:
                 record = json.loads(line)
             except json.JSONDecodeError:
                 continue
-            text = record.get("response", "").strip()
-            page_num = record.get("page_index", None)
+
+            # Support both old format (per-page) and new format (per-document)
+            text = record.get("response", record.get("text", "")).strip()
+            page_num = record.get("page_index", line_num)
+
             if not text:
                 empty_count += 1
                 continue

@@ -8,3 +8,5 @@ opencv-python-headless
 PyMuPDF
 torch          # optional if conda already provides it
 transformers   # OlmOCR dependency
+filelock>=3.13.0   # Single-instance locking for batch processing
+psutil>=5.9.0      # Process management utilities
