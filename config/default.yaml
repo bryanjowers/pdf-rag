@@ -1,9 +1,9 @@
 # Legal LLM RAG Pipeline Configuration
-# Phase 2: Multi-Format Ingestion
-# Version: 2.2.0
+# Phase 3: Week 1 - Bbox + Entities + Embeddings
+# Version: 2.3.0
 
 metadata:
-  config_version: "2.2.0"
+  config_version: "2.3.0"
   # config_hash will be auto-computed at runtime
 
 # PDF Classification thresholds
@@ -74,6 +74,47 @@ tables:
   check_column_consistency: true  # Verify all rows have same column count
   max_footnote_scan_lines: 10     # Look ahead this many lines after table
 
+# Entity extraction settings
+entity_extraction:
+  enabled: false                  # Toggle entity extraction (requires OpenAI API key)
+  openai_api_key: null            # If null, uses OPENAI_API_KEY environment variable
+  extractor: "gpt-4o-mini"        # Model to use for extraction
+  normalize: true                 # Normalize and deduplicate entities
+  track_costs: true               # Track token usage and estimated costs
+
+  # Entity types to extract (legal document focus)
+  entity_types:
+    - PERSON      # Individuals (grantors, grantees, witnesses, notaries)
+    - PARCEL      # Property identifiers (tracts, legal descriptions)
+    - DATE        # Recording/execution/effective dates
+    - AMOUNT      # Monetary values (purchase prices, consideration)
+    - ORG         # Organizations (corporations, LLCs, government entities)
+
+  # Legal roles to identify
+  legal_roles:
+    - grantor     # Party conveying property/rights
+    - grantee     # Party receiving property/rights
+    - subject     # Subject matter of agreement
+    - witness     # Witness to execution
+    - notary      # Notary public
+
+# Embedding generation (for RAG semantic search)
+embeddings:
+  enabled: false                    # Toggle embedding generation
+  model: "all-mpnet-base-v2"        # sentence-transformers model name
+  batch_size: 32                    # Batch size for generation
+  normalize: true                   # Normalize embeddings to unit vectors
+  dimension: 768                    # Embedding dimension (auto-detected from model)
+
+# Qdrant vector database (for RAG)
+qdrant:
+  enabled: false                    # Toggle Qdrant upload
+  host: "localhost"                 # Qdrant server host
+  port: 6333                        # Qdrant server port
+  collection_name: "legal_docs"     # Collection name
+  in_memory: false                  # Use in-memory storage (testing only)
+  batch_size: 100                   # Batch size for upload
+
 # Processor settings
 processors:
   # OlmOCR-2 settings
@@ -97,7 +138,7 @@ processors:
 
 # Output schema
 schema:
-  version: "2.2.0"
+  version: "2.3.0"
 
   # Required JSONL fields
   required_fields:

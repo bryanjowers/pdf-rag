@@ -258,14 +258,111 @@ def olmocr_jsonl_to_markdown(jsonl_path: Path) -> str:
         raise ValueError(f"Failed to read JSONL: {e}")
 
 
+def olmocr_jsonl_to_markdown_with_pages(jsonl_path: Path) -> tuple[str, Dict[str, int]]:
+    """
+    Convert OlmOCR JSONL output to markdown with character-based page mapping.
+
+    OlmOCR v0.4.2+ outputs JSONL files with page numbers in attributes.pdf_page_numbers.
+    Format: [[start_char, end_char, page_num], ...]
+
+    Args:
+        jsonl_path: Path to JSONL file
+
+    Returns:
+        Tuple of (markdown_content, page_ranges) where page_ranges maps character positions to pages
+        page_ranges format: {char_range: page_num} where char_range is "start-end"
+
+    Raises:
+        FileNotFoundError: If JSONL doesn't exist
+        ValueError: If JSONL is empty or malformed
+    """
+    import json
+
+    if not jsonl_path.exists():
+        raise FileNotFoundError(f"JSONL not found: {jsonl_path}")
+
+    markdown_parts = []
+    page_ranges = []  # List of (start_char_in_full_text, end_char_in_full_text, page_num)
+    current_char_pos = 0
+
+    try:
+        with jsonl_path.open("r", encoding="utf-8") as f:
+            for line_num, line in enumerate(f, 1):
+                line = line.strip()
+                if not line:
+                    continue
+
+                try:
+                    data = json.loads(line)
+                    text = data.get("text", "")
+
+                    if text:
+                        markdown_parts.append(text)
+
+                        # Extract page ranges from attributes.pdf_page_numbers
+                        # Format: [[start_char, end_char, page_num], ...]
+                        attrs = data.get("attributes", {})
+                        pdf_pages = attrs.get("pdf_page_numbers", [])
+
+                        if pdf_pages:
+                            # Convert OlmOCR's local character positions to global positions
+                            for page_range in pdf_pages:
+                                if len(page_range) >= 3:
+                                    local_start, local_end, page_num = page_range
+                                    global_start = current_char_pos + local_start
+                                    global_end = current_char_pos + local_end
+                                    page_ranges.append((global_start, global_end, page_num))
+
+                        # Update character position (text + 2 chars for "\n\n")
+                        current_char_pos += len(text) + 2
+
+                except json.JSONDecodeError as e:
+                    raise ValueError(f"Malformed JSON on line {line_num}: {e}")
+
+        if not markdown_parts:
+            raise ValueError(f"JSONL file is empty or contains no text: {jsonl_path}")
+
+        # Join with double newlines to separate pages/sections
+        markdown_content = "\n\n".join(markdown_parts)
+
+        # Convert page_ranges list to a lookup-friendly dict
+        page_map = {}
+        for start, end, page_num in page_ranges:
+            page_map[f"{start}-{end}"] = page_num
+
+        return markdown_content, page_map
+
+    except Exception as e:
+        raise ValueError(f"Failed to read JSONL: {e}")
+
+
+def _get_page_for_char_position(char_pos: int, page_mapping: Dict[str, int]) -> Optional[int]:
+    """
+    Find which page a character position falls into.
+
+    Args:
+        char_pos: Character position in the text
+        page_mapping: Dict mapping "start-end" ranges to page numbers
+
+    Returns:
+        Page number, or None if not found
+    """
+    for range_str, page_num in page_mapping.items():
+        start, end = map(int, range_str.split('-'))
+        if start <= char_pos < end:
+            return page_num
+    return None
+
+
 def olmocr_to_jsonl(
     markdown_content: str,
     source_path: Path,
     config: Dict,
-    batch_id: str
+    batch_id: str,
+    page_mapping: Optional[Dict[str, int]] = None
 ) -> List[Dict]:
     """
-    Convert OlmOCR markdown output to JSONL chunks.
+    Convert OlmOCR markdown output to JSONL chunks (schema v2.3.0).
 
     Reuses chunking logic from pdf_digital handler but applies to
     OlmOCR outputs (scanned PDFs, images).
@@ -275,9 +372,10 @@ def olmocr_to_jsonl(
         source_path: Original source file path
         config: Configuration dictionary
         batch_id: Batch identifier
+        page_mapping: Optional dict mapping character ranges ("start-end") to page numbers
 
     Returns:
-        List of JSONL record dictionaries
+        List of JSONL record dictionaries (schema v2.3.0 with page-level bbox)
     """
     from datetime import datetime
     from utils_classify import compute_file_hash, get_mime_type
@@ -289,7 +387,7 @@ def olmocr_to_jsonl(
     # Generate doc_id from hash
     doc_id = file_hash[:16]
 
-    # Simple chunking by paragraphs
+    # Try paragraph-based chunking first
     paragraphs = [p.strip() for p in markdown_content.split('\n\n') if p.strip()]
 
     # Get chunking config
@@ -297,32 +395,68 @@ def olmocr_to_jsonl(
     token_target = chunking_config.get("token_target", 1400)
     token_max = chunking_config.get("token_max", 2000)
 
-    # Combine paragraphs into chunks
+    # Detect if this is continuous text (OlmOCR JSONL) vs structured markdown (Docling)
+    # If we have very few paragraphs, use sentence-based chunking instead
+    use_sentence_chunking = len(paragraphs) < 3
+
     chunks = []
-    current_chunk = []
-    current_tokens = 0
 
-    for para in paragraphs:
-        para_tokens = len(para.split())
+    if use_sentence_chunking:
+        # OlmOCR produces continuous text - use sentence-based chunking
+        import re
 
-        # If adding exceeds max, finalize current chunk
-        if current_tokens + para_tokens > token_max and current_chunk:
-            chunks.append("\n\n".join(current_chunk))
-            current_chunk = [para]
-            current_tokens = para_tokens
-        else:
-            current_chunk.append(para)
-            current_tokens += para_tokens
+        # Split by sentences (basic approach)
+        sentences = re.split(r'(?<=[.!?])\s+', markdown_content)
 
-            # If reached target, finalize
-            if current_tokens >= token_target:
+        current_chunk = []
+        current_tokens = 0
+
+        for sent in sentences:
+            sent_tokens = len(sent.split())
+
+            if current_tokens + sent_tokens > token_max and current_chunk:
+                chunks.append(' '.join(current_chunk))
+                current_chunk = [sent]
+                current_tokens = sent_tokens
+            else:
+                current_chunk.append(sent)
+                current_tokens += sent_tokens
+
+                if current_tokens >= token_target:
+                    chunks.append(' '.join(current_chunk))
+                    current_chunk = []
+                    current_tokens = 0
+
+        # Add remaining
+        if current_chunk:
+            chunks.append(' '.join(current_chunk))
+
+    else:
+        # Structured markdown (Docling) - use paragraph-based chunking
+        current_chunk = []
+        current_tokens = 0
+
+        for para in paragraphs:
+            para_tokens = len(para.split())
+
+            # If adding exceeds max, finalize current chunk
+            if current_tokens + para_tokens > token_max and current_chunk:
                 chunks.append("\n\n".join(current_chunk))
-                current_chunk = []
-                current_tokens = 0
+                current_chunk = [para]
+                current_tokens = para_tokens
+            else:
+                current_chunk.append(para)
+                current_tokens += para_tokens
 
-    # Add remaining
-    if current_chunk:
-        chunks.append("\n\n".join(current_chunk))
+                # If reached target, finalize
+                if current_tokens >= token_target:
+                    chunks.append("\n\n".join(current_chunk))
+                    current_chunk = []
+                    current_tokens = 0
+
+        # Add remaining
+        if current_chunk:
+            chunks.append("\n\n".join(current_chunk))
 
     # Determine file type
     ext = source_path.suffix.lower()
@@ -337,13 +471,32 @@ def olmocr_to_jsonl(
     else:
         file_type = 'unknown'
 
-    # Convert to JSONL records
-    schema_version = config.get("schema", {}).get("version", "2.2.0")
+    # Convert to JSONL records (schema v2.3.0)
+    schema_version = config.get("schema", {}).get("version", "2.3.0")
     processed_at = datetime.utcnow().isoformat() + "Z"
 
     jsonl_records = []
     for idx, chunk_text in enumerate(chunks):
         chunk_tokens = len(chunk_text.split())
+
+        # Get page number by finding this chunk's position in the markdown
+        page_num = None
+        if page_mapping and chunk_text:
+            # Find where this chunk appears in the markdown
+            char_pos = markdown_content.find(chunk_text[:100])  # Use first 100 chars for matching
+            if char_pos != -1:
+                page_num = _get_page_for_char_position(char_pos, page_mapping)
+
+        # Page-level bbox (MVP: coordinates as None, page number only)
+        chunk_bbox = None
+        if page_num is not None:
+            chunk_bbox = {
+                "page": page_num,
+                "x0": None,  # Precise coordinates not available from OlmOCR
+                "y0": None,
+                "x1": None,
+                "y1": None
+            }
 
         record = {
             "id": f"{doc_id}_{idx:04d}",
@@ -354,7 +507,8 @@ def olmocr_to_jsonl(
                 "page_span": None,  # TODO: Extract from OlmOCR output
                 "sections": [],
                 "table": "| " in chunk_text and chunk_text.count("|") >= 3,
-                "token_count": chunk_tokens
+                "token_count": chunk_tokens,
+                "bbox": chunk_bbox  # NEW in v2.3.0: page-level bbox
             },
             "source": {
                 "file_path": str(source_path.resolve()),

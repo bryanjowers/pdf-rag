@@ -1,8 +1,0 @@
-{
-  "timestamp": "2025-10-29T03:28:51.369233Z",
-  "file_path": "/home/bryanjowers/pdf-rag/test_output/jsonl/simple.jsonl",
-  "file_hash": "709e2ad92a450be001ff628402e6f1b5920e50c0cc0ae80ee6b8481ec47f1105",
-  "chunks": 1,
-  "processor": "docling",
-  "processing_duration_ms": 4100
-}

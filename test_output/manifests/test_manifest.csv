@@ -1,4 +1,0 @@
-doc_id,file_path,file_name,file_type,processor,status,chunks_created,processing_duration_ms,char_count,estimated_tokens,hash_sha256,batch_id,processed_at,warnings,error,confidence_score
-709e2ad92a450be0,pdf_input/simple.pdf,simple.pdf,pdf,docling,success,1,4100,23,6,709e2ad92a450be001ff628402e6f1b5920e50c0cc0ae80ee6b8481ec47f1105,test_batch_001,2025-10-29T03:28:51.369081Z,Low text yield,,1.0
-21be79f4560d3bca,pdf_input/SDTO_170.0 ac 12-5-2022.pdf,SDTO_170.0 ac 12-5-2022.pdf,pdf,docling,success,6,66500,91245,8303,21be79f4560d3bca6e319cef32c7eaa2edb06ade817909060587038b5cbbfe7d,test_batch_002,2025-10-29T03:28:51.369127Z,,,1.0
-dd6588894bb1d8ae,"pdf_input/SDTO_170 ac. Cavin Unit - Tracts 7,8,9, Panola County, TX (DRAFT).docx","SDTO_170 ac. Cavin Unit - Tracts 7,8,9, Panola County, TX (DRAFT).docx",docx,docling,success,7,4400,87890,9572,dd6588894bb1d8ae87e8521da705fcc82c16a2d84ecda7fe168ba47a37d4fec8,test_batch_003,2025-10-29T03:28:51.369142Z,,,1.0

@@ -11,5 +11,11 @@ olmocr_pipeline/data/logs/
 olmocr_pipeline/data/processed_html/
 olmocr-pipeline-debug.log
 
+# Environment files with secrets
+setup_env.sh
+.env
+*.key
+
+# Downloaded models and data
 docling/
 pdf_input/

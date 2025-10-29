@@ -1,0 +1,65 @@
+# Phase 3 Infrastructure Configuration
+# Created: 2025-10-29
+
+# Qdrant Vector Database
+qdrant:
+  host: localhost
+  port: 6333
+  collection_name: legal_docs_v2_3
+  vector_size: 1536  # OpenAI text-embedding-3-small
+  distance_metric: cosine
+
+# OpenAI Settings
+openai:
+  embeddings:
+    model: text-embedding-3-small
+    dimensions: 1536
+    batch_size: 100
+  llm:
+    model: gpt-4o-mini
+    temperature: 0.0
+    max_tokens: 2000
+  entity_extraction:
+    model: gpt-4o-mini
+    temperature: 0.0
+    confidence_threshold: 0.7
+
+# BM25 Lexical Search
+bm25:
+  tokenizer: simple  # Options: simple, spacy, nltk
+  k1: 1.5
+  b: 0.75
+
+# Reranker
+reranker:
+  model: BAAI/bge-reranker-large
+  top_k: 10
+
+# Hybrid Search Weights
+hybrid_search:
+  bm25_weight: 0.3
+  vector_weight: 0.7
+  rerank_top_k: 10
+
+# LangSmith Monitoring (API key set via environment variable)
+monitoring:
+  langsmith:
+    project: legal-rag-demo1-2
+    tracing: true
+    log_prompts: true
+    log_responses: true
+
+# Schema Configuration
+schema:
+  version: "2.3.0"
+  bbox_enabled: true
+  bbox_strategy:
+    digital_pdf: "docling_native"  # Full bbox precision from Docling
+    scanned_pdf: "page_level"      # OlmOCR text + page-level citations (MVP)
+    # Future option: "hybrid_match" # OlmOCR text + Docling bbox fuzzy matching
+
+# Demo 1+2 Settings
+demo1_2:
+  min_entity_confidence: 0.7
+  max_search_results: 20
+  enable_entity_filtering: true

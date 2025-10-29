@@ -18,7 +18,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from utils_olmocr import (
     run_olmocr_batch,
     get_olmocr_jsonl_path,
-    olmocr_jsonl_to_markdown,
+    olmocr_jsonl_to_markdown_with_pages,
     olmocr_to_jsonl
 )
 
@@ -107,9 +107,32 @@ def process_scanned_pdf(
         if jsonl_path_olmocr is None or not jsonl_path_olmocr.exists():
             raise FileNotFoundError(f"OlmOCR did not produce JSONL output for: {pdf_path.name}")
 
-        # Convert JSONL to markdown
-        markdown_content = olmocr_jsonl_to_markdown(jsonl_path_olmocr)
-        char_count = len(markdown_content)
+        # Check for OlmOCR-generated markdown file (created with --markdown flag)
+        # OlmOCR creates markdown in different locations depending on path type:
+        # - Absolute path input: Creates .md in same directory as source PDF
+        # - Relative path input: Creates .md in workspace/markdown/
+        # Try source directory first (most common with absolute paths)
+        olmocr_md_path = pdf_path.with_suffix('.md')
+
+        # If not found, try workspace markdown directory (for relative paths)
+        if not olmocr_md_path.exists():
+            olmocr_md_path = olmocr_staging / "markdown" / pdf_path.name.replace('.pdf', '.md')
+
+        if olmocr_md_path.exists():
+            # Use OlmOCR's markdown (properly formatted with line breaks)
+            print(f"      📄 Using OlmOCR markdown: {olmocr_md_path.name}")
+            markdown_content = olmocr_md_path.read_text(encoding="utf-8")
+            char_count = len(markdown_content)
+
+            # Extract page mapping from JSONL for bbox tracking
+            _, page_map = olmocr_jsonl_to_markdown_with_pages(jsonl_path_olmocr)
+            print(f"      📍 Extracted page info for {len(page_map)} text blocks")
+        else:
+            # Fallback: Convert JSONL to markdown (for image inputs)
+            print(f"      ⚠️  No markdown file found, using JSONL text")
+            markdown_content, page_map = olmocr_jsonl_to_markdown_with_pages(jsonl_path_olmocr)
+            char_count = len(markdown_content)
+            print(f"      📍 Extracted page info for {len(page_map)} text blocks")
 
         # Get page count from PDF
         try:
@@ -129,8 +152,39 @@ def process_scanned_pdf(
         final_md_path = markdown_dir / f"{stem}.md"
         final_md_path.write_text(markdown_content, encoding="utf-8")
 
-        # Convert to JSONL
-        chunks = olmocr_to_jsonl(markdown_content, pdf_path, config, batch_id)
+        # Convert to JSONL with page mapping
+        chunks = olmocr_to_jsonl(
+            markdown_content,
+            pdf_path,
+            config,
+            batch_id,
+            page_mapping=page_map
+        )
+
+        # Add entity extraction if enabled
+        import os
+        enable_entities = config.get("entity_extraction", {}).get("enabled", False)
+        if enable_entities:
+            from utils_entity_integration import add_entities_to_chunks, format_entity_stats
+            api_key = config.get("entity_extraction", {}).get("openai_api_key") or os.getenv("OPENAI_API_KEY")
+            print(f"   🔍 Extracting entities...")
+            chunks, entity_stats = add_entities_to_chunks(
+                chunks,
+                enable_entities=True,
+                api_key=api_key
+            )
+            print(format_entity_stats(entity_stats))
+
+        # Generate embeddings if enabled
+        enable_embeddings = config.get("embeddings", {}).get("enabled", False)
+        if enable_embeddings:
+            from utils_embeddings import EmbeddingGenerator, format_embedding_stats
+            print(f"   🔢 Generating embeddings...")
+            embedding_gen = EmbeddingGenerator(
+                model_name=config.get("embeddings", {}).get("model", "all-mpnet-base-v2")
+            )
+            chunks = embedding_gen.add_embeddings_to_chunks(chunks, show_progress=False)
+            print(f"   {format_embedding_stats(chunks)}")
 
         # Write JSONL
         jsonl_path = jsonl_dir / f"{stem}.jsonl"
