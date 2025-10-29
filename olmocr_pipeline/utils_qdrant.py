@@ -106,6 +106,7 @@ class QdrantLoader:
                 continue
 
             # Prepare payload (all metadata except embedding)
+            bbox = chunk.get("attrs", {}).get("bbox") if chunk.get("attrs") else None
             payload = {
                 "doc_id": chunk.get("doc_id"),
                 "chunk_index": chunk.get("chunk_index"),
@@ -114,7 +115,7 @@ class QdrantLoader:
                 "token_count": chunk.get("token_count"),
                 "source_filename": chunk.get("source", {}).get("filename"),
                 "source_file_type": chunk.get("source", {}).get("file_type"),
-                "page": chunk.get("attrs", {}).get("bbox", {}).get("page"),
+                "page": bbox.get("page") if bbox else None,
                 "processed_at": chunk.get("processed_at"),
                 "batch_id": chunk.get("batch_id")
             }
