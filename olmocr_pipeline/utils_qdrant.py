@@ -107,14 +107,15 @@ class QdrantLoader:
 
             # Prepare payload (all metadata except embedding)
             bbox = chunk.get("attrs", {}).get("bbox") if chunk.get("attrs") else None
+            source = chunk.get("source", {})
             payload = {
                 "doc_id": chunk.get("doc_id"),
                 "chunk_index": chunk.get("chunk_index"),
                 "text": chunk.get("text"),
                 "text_length": len(chunk.get("text", "")),
                 "token_count": chunk.get("token_count"),
-                "source_filename": chunk.get("source", {}).get("filename"),
-                "source_file_type": chunk.get("source", {}).get("file_type"),
+                "source_filename": source.get("file_name") or source.get("filename"),
+                "source_file_type": source.get("file_type"),
                 "page": bbox.get("page") if bbox else None,
                 "processed_at": chunk.get("processed_at"),
                 "batch_id": chunk.get("batch_id")

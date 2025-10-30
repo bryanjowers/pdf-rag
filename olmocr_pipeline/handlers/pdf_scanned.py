@@ -28,7 +28,8 @@ def process_scanned_pdf(
     output_dir: Path,
     config: Dict,
     batch_id: str,
-    apply_preprocessing: bool = False
+    apply_preprocessing: bool = False,
+    skip_enrichment: bool = False
 ) -> Dict:
     """
     Process scanned PDF using OlmOCR-2 OCR.
@@ -161,30 +162,30 @@ def process_scanned_pdf(
             page_mapping=page_map
         )
 
-        # Add entity extraction if enabled
-        import os
-        enable_entities = config.get("entity_extraction", {}).get("enabled", False)
-        if enable_entities:
-            from utils_entity_integration import add_entities_to_chunks, format_entity_stats
-            api_key = config.get("entity_extraction", {}).get("openai_api_key") or os.getenv("OPENAI_API_KEY")
-            print(f"   🔍 Extracting entities...")
-            chunks, entity_stats = add_entities_to_chunks(
-                chunks,
-                enable_entities=True,
-                api_key=api_key
-            )
-            print(format_entity_stats(entity_stats))
+        # Add entity extraction and embeddings (unless skipped for ingest-only mode)
+        if not skip_enrichment:
+            import os
+            enable_entities = config.get("entity_extraction", {}).get("enabled", False)
+            if enable_entities:
+                from utils_entity_integration import add_entities_to_chunks, format_entity_stats
+                api_key = config.get("entity_extraction", {}).get("openai_api_key") or os.getenv("OPENAI_API_KEY")
+                print(f"   🔍 Extracting entities...")
+                chunks, entity_stats = add_entities_to_chunks(
+                    chunks,
+                    enable_entities=True,
+                    api_key=api_key
+                )
+                print(format_entity_stats(entity_stats))
 
-        # Generate embeddings if enabled
-        enable_embeddings = config.get("embeddings", {}).get("enabled", False)
-        if enable_embeddings:
-            from utils_embeddings import EmbeddingGenerator, format_embedding_stats
-            print(f"   🔢 Generating embeddings...")
-            embedding_gen = EmbeddingGenerator(
-                model_name=config.get("embeddings", {}).get("model", "all-mpnet-base-v2")
-            )
-            chunks = embedding_gen.add_embeddings_to_chunks(chunks, show_progress=False)
-            print(f"   {format_embedding_stats(chunks)}")
+            enable_embeddings = config.get("embeddings", {}).get("enabled", False)
+            if enable_embeddings:
+                from utils_embeddings import EmbeddingGenerator, format_embedding_stats
+                print(f"   🔢 Generating embeddings...")
+                embedding_gen = EmbeddingGenerator(
+                    model_name=config.get("embeddings", {}).get("model", "all-mpnet-base-v2")
+                )
+                chunks = embedding_gen.add_embeddings_to_chunks(chunks, show_progress=False)
+                print(f"   {format_embedding_stats(chunks)}")
 
         # Write JSONL
         jsonl_path = jsonl_dir / f"{stem}.jsonl"

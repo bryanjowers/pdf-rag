@@ -19,7 +19,8 @@ def process_docx(
     docx_path: Path,
     output_dir: Path,
     config: Dict,
-    batch_id: str
+    batch_id: str,
+    skip_enrichment: bool = False
 ) -> Dict:
     """
     Process DOCX file using Docling with fallback to python-docx.
@@ -67,7 +68,7 @@ def process_docx(
     # Try Docling first
     try:
         print(f"   🔄 Converting with Docling: {docx_path.name}")
-        result = _process_with_docling(docx_path, markdown_path, jsonl_path, config, batch_id)
+        result = _process_with_docling(docx_path, markdown_path, jsonl_path, config, batch_id, skip_enrichment)
 
         if result["success"]:
             duration_ms = int((time.time() - start_time) * 1000)
@@ -85,7 +86,7 @@ def process_docx(
     # Fallback to python-docx
     print(f"   🔄 Attempting fallback to python-docx...")
     try:
-        result = _process_with_python_docx(docx_path, markdown_path, jsonl_path, config, batch_id)
+        result = _process_with_python_docx(docx_path, markdown_path, jsonl_path, config, batch_id, skip_enrichment)
 
         if result["success"]:
             duration_ms = int((time.time() - start_time) * 1000)
@@ -121,7 +122,8 @@ def _process_with_docling(
     markdown_path: Path,
     jsonl_path: Path,
     config: Dict,
-    batch_id: str
+    batch_id: str,
+    skip_enrichment: bool = False
 ) -> Dict:
     """
     Process DOCX using Docling converter.
@@ -173,6 +175,31 @@ def _process_with_docling(
         file_type="docx"
     )
 
+    # Add entity extraction and embeddings (unless skipped for ingest-only mode)
+    if not skip_enrichment:
+        enable_entities = config.get("entity_extraction", {}).get("enabled", False)
+        if enable_entities:
+            import os
+            from utils_entity_integration import add_entities_to_chunks, format_entity_stats
+            api_key = config.get("entity_extraction", {}).get("openai_api_key") or os.getenv("OPENAI_API_KEY")
+            print(f"   🔍 Extracting entities...")
+            chunks, entity_stats = add_entities_to_chunks(
+                chunks,
+                enable_entities=True,
+                api_key=api_key
+            )
+            print(format_entity_stats(entity_stats))
+
+        enable_embeddings = config.get("embeddings", {}).get("enabled", False)
+        if enable_embeddings:
+            from utils_embeddings import EmbeddingGenerator, format_embedding_stats
+            print(f"   🔢 Generating embeddings...")
+            embedding_gen = EmbeddingGenerator(
+                model_name=config.get("embeddings", {}).get("model", "all-mpnet-base-v2")
+            )
+            chunks = embedding_gen.add_embeddings_to_chunks(chunks, show_progress=False)
+            print(f"   {format_embedding_stats(chunks)}")
+
     # Write JSONL output
     with jsonl_path.open("w", encoding="utf-8") as f:
         for chunk in chunks:
@@ -198,7 +225,8 @@ def _process_with_python_docx(
     markdown_path: Path,
     jsonl_path: Path,
     config: Dict,
-    batch_id: str
+    batch_id: str,
+    skip_enrichment: bool = False
 ) -> Dict:
     """
     Fallback processing using python-docx library.
@@ -272,6 +300,31 @@ def _process_with_python_docx(
         processor="python-docx",
         file_type="docx"
     )
+
+    # Add entity extraction and embeddings (unless skipped for ingest-only mode)
+    if not skip_enrichment:
+        enable_entities = config.get("entity_extraction", {}).get("enabled", False)
+        if enable_entities:
+            import os
+            from utils_entity_integration import add_entities_to_chunks, format_entity_stats
+            api_key = config.get("entity_extraction", {}).get("openai_api_key") or os.getenv("OPENAI_API_KEY")
+            print(f"   🔍 Extracting entities...")
+            chunks, entity_stats = add_entities_to_chunks(
+                chunks,
+                enable_entities=True,
+                api_key=api_key
+            )
+            print(format_entity_stats(entity_stats))
+
+        enable_embeddings = config.get("embeddings", {}).get("enabled", False)
+        if enable_embeddings:
+            from utils_embeddings import EmbeddingGenerator, format_embedding_stats
+            print(f"   🔢 Generating embeddings...")
+            embedding_gen = EmbeddingGenerator(
+                model_name=config.get("embeddings", {}).get("model", "all-mpnet-base-v2")
+            )
+            chunks = embedding_gen.add_embeddings_to_chunks(chunks, show_progress=False)
+            print(f"   {format_embedding_stats(chunks)}")
 
     # Write JSONL output
     with jsonl_path.open("w", encoding="utf-8") as f:

@@ -18,4 +18,4 @@ setup_env.sh
 
 # Downloaded models and data
 docling/
-pdf_input/
+pdf_input//logs/

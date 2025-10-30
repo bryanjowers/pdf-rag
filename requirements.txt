@@ -1,16 +1,39 @@
-olmocr
-haystack-ai
-sentence-transformers
-openai
-beautifulsoup4
-pdf2image
-opencv-python-headless
-PyMuPDF
-torch          # optional if conda already provides it
-transformers   # OlmOCR dependency
-filelock>=3.13.0   # Single-instance locking for batch processing
-psutil>=5.9.0      # Process management utilities
-PyYAML>=6.0        # Configuration management
-openpyxl>=3.1.0    # Excel file processing
-python-docx>=1.0.0 # Word document processing (fallback)
-pandas>=2.0.0      # CSV/XLSX data handling
+# Core Pipeline Dependencies
+docling>=1.0.0              # PDF/DOCX processing (digital PDFs)
+qdrant-client>=1.7.0        # Vector database client
+
+# OlmOCR - GPU-accelerated scanned PDF OCR
+# IMPORTANT: Must be installed separately with GPU support:
+#   pip install olmocr[gpu] --extra-index-url https://download.pytorch.org/whl/cu128
+# Requirements: CUDA 12.8, Python 3.11, 15GB+ VRAM
+# Reference: https://github.com/allenai/olmocr
+# NOTE: Do NOT uncomment below - use the pip install command above instead
+# olmocr[gpu]  # Requires --extra-index-url flag (not supported in requirements.txt)
+
+sentence-transformers>=2.2.0 # Embeddings generation
+openai>=1.0.0               # Entity extraction (GPT-4o-mini)
+
+# Document Processing
+beautifulsoup4              # HTML parsing
+pdf2image                   # PDF to image conversion
+opencv-python-headless      # Image processing
+PyMuPDF                     # PDF manipulation
+python-docx>=1.0.0          # Word document fallback
+openpyxl>=3.1.0             # Excel file processing
+
+# ML/AI
+# torch - Installed via olmocr[gpu] installation
+# OlmOCR requires: PyTorch 2.7+ with CUDA 12.8
+# Current tested version: torch==2.8.0+cu128 (works perfectly)
+# DO NOT install separately unless fixing version conflicts
+# CRITICAL: NEVER install FlashInfer (downgrades to 2.4.x and breaks setup)
+transformers                # OlmOCR dependency
+
+# Utilities
+filelock>=3.13.0            # Single-instance locking
+psutil>=5.9.0               # Process management
+PyYAML>=6.0                 # Configuration management
+pandas>=2.0.0               # Data handling
+
+# Legacy (backward compatibility)
+haystack-ai                 # Used in earlier phases

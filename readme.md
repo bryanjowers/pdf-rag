@@ -1,23 +1,23 @@
 
-# Legal LLM RAG Pipeline - Phase 2 (Multi-Format Ingestion)
+# Legal LLM RAG Pipeline - Phase 3 (RAG + Entities)
 
 > **Production-ready** document processing pipeline for legal documents
-> Supports PDFs (scanned + digital), Word, Excel, and images with deterministic output
+> Multi-format ingestion + Entity extraction + Embeddings + Vector search
 
-**Status:** ✅ Phase 2 Complete (100%) | **Next:** Phase 3 (RAG Pipeline) | **Environment:** Headless VM with GCS + NVIDIA L4 GPUs
+**Status:** ✅ Phase 2 Complete | 🚧 Phase 3 In Progress | **Environment:** Headless VM with GCS + NVIDIA L4 GPUs
 
 ---
 
 ## 📋 Project Planning & Documentation
 
-All planning documents, roadmaps, and technical specifications are organized in **[docs/planning/](docs/planning/)**
+All planning documents, roadmaps, and technical specifications are organized in **[docs/](docs/)**
 
 **Quick Links:**
-- 🚀 **[Phase 3 Roadmap](docs/planning/PHASE3_READY.md)** - Start here! Executive summary & next actions
-- 📋 **[Complete Plan](docs/planning/PHASE3_PLAN.md)** - Detailed 3-demo roadmap (5-6 months)
-- 🔧 **[Schema v2.3.0](docs/planning/SCHEMA_V2.3.0.md)** - Technical specification (bbox + entities)
-- 🛠️ **[Infrastructure Setup](docs/planning/SETUP_INFRASTRUCTURE.md)** - Qdrant + LangSmith setup guide
-- 📚 **[All Planning Docs](docs/planning/INDEX.md)** - Complete index with navigation guide
+- 🤝 **[Contributing Guide](CONTRIBUTING.md)** - ⭐ Development standards & workflows
+- 📚 **[All Documentation](docs/README.md)** - Complete documentation index
+- 🔧 **[Schema v2.3.0](docs/technical/SCHEMA_V2.3.0.md)** - Technical specification (bbox + entities)
+- 🛠️ **[Infrastructure Setup](docs/guides/SETUP_INFRASTRUCTURE.md)** - Qdrant + LangSmith setup guide
+- 🚀 **[Performance Optimization](docs/technical/PARALLELIZATION_OPTIMIZATION_COMPLETE.md)** - 3x speedup details
 
 ---
 
@@ -27,7 +27,7 @@ All planning documents, roadmaps, and technical specifications are organized in 
 legal documents (deeds, assignments, title opinions, Division of Interest spreadsheets) into
 unified Markdown + JSONL outputs ready for RAG.
 
-### Architecture (Phase 2)
+### Architecture (Phase 3)
 
 | Component | Technology | Purpose |
 |-----------|-----------|---------|
@@ -36,19 +36,27 @@ unified Markdown + JSONL outputs ready for RAG.
 | **Word Documents** | Docling + python-docx fallback | Process DOCX with sections and tables |
 | **Excel Files** | openpyxl with smart chunking | Extract and chunk tables semantically |
 | **Images** | OlmOCR-2 | OCR for JPG/PNG/TIF files |
-| **Unified Output** | JSONL + Markdown | Consistent schema v2.2.0 for all file types |
+| **Entity Extraction** | GPT-4o-mini | Extract legal entities (parties, tracts, dates, etc.) |
+| **Embeddings** | all-mpnet-base-v2 | 768-dim sentence embeddings (GPU-accelerated) |
+| **Vector Database** | Qdrant | Persistent vector storage for semantic search |
+| **Unified Output** | JSONL + Markdown | Consistent schema v2.3.0 with bbox + entities |
 | **QA & Validation** | Token range checks, schema validation | Ensure chunk quality (800-2000 tokens) |
 
-### Key Features (Phase 2)
+### Key Features (Phase 2 + Phase 3)
 
 ✅ **5 file types supported:** PDF (digital/scanned), DOCX, XLSX, CSV, Images (JPG/PNG/TIF)
+✅ **Optimized parallel processing:** 4-worker parallelization with 3x speedup for digital PDFs
+✅ **Pipeline separation:** Ingest-only and enrich-only modes for fast iteration
+✅ **PDF classification filter:** Process only scanned or digital PDFs
+✅ **Entity extraction:** GPT-4o-mini powered legal entity extraction
+✅ **Semantic embeddings:** 768-dimensional vectors with all-mpnet-base-v2
+✅ **Persistent vector DB:** Qdrant for similarity search
 ✅ **200-page hard limit** for PDFs (safety guardrail)
 ✅ **Smart XLSX chunking** with 4 heuristic rules (blank rows, schema changes, headers, hard cap)
 ✅ **Table preservation** in Markdown format
 ✅ **Automatic retry + quarantine** for failed files
 ✅ **Manifest CSVs** with full processing metadata
 ✅ **Deterministic output:** Same input → same output
-✅ **70% code reuse** (OlmOCR logic extracted once, used 3x)
 
 ---
 
@@ -62,16 +70,46 @@ conda activate olmocr-optimized
 cp your-files/* /mnt/gcs/legal-ocr-pdf-input/
 # Supported: PDF, DOCX, XLSX, CSV, JPG, PNG, TIF
 
-# 3. Process all documents in batch
-python olmocr_pipeline/process_documents.py --auto --batch-size 10
+# 3. Process documents
+# For batch processing (100s of PDFs):
+python scripts/process_documents.py --auto --batch-size 10
 
-# 4. Review manifest and quarantine logs
-cat /mnt/gcs/legal-ocr-results/manifests/manifest_*.csv
-cat /mnt/gcs/legal-ocr-results/quarantine/quarantine.csv  # if any failures
+# For single/few documents:
+python scripts/process_documents.py --auto
+
+# 4. Load processed documents to Qdrant vector database
+python scripts/load_to_qdrant.py
 
 # 5. Run RAG queries
-python main.py
+python scripts/query_cli.py
+
+# Optional: Review processing results
+cat /mnt/gcs/legal-ocr-results/manifests/manifest_*.csv
+cat /mnt/gcs/legal-ocr-results/quarantine/quarantine.csv  # if any failures
 ```
+
+---
+
+## 🛠️ Scripts & Utilities
+
+All utility scripts are organized in **[scripts/](scripts/)** with detailed documentation.
+
+### Main Scripts
+- 🔥 **[process_documents.py](scripts/process_documents.py)** - Main pipeline (PDFs → markdown → JSONL with entities & embeddings)
+- 📋 **[rebuild_inventory.py](scripts/rebuild_inventory.py)** - Build/rebuild file inventory with classification
+- 🔍 **[query_cli.py](scripts/query_cli.py)** - Interactive RAG query interface
+- 📦 **[load_to_qdrant.py](scripts/load_to_qdrant.py)** - Load embeddings to vector database
+- ✨ **[enrich_from_markdown.py](scripts/enrich_from_markdown.py)** - Add entities/embeddings to existing markdown
+
+### Maintenance
+- 🧹 **[clean_slate.sh](scripts/maintenance/clean_slate.sh)** - Complete system reset (preserves input PDFs)
+- ⚙️ **[setup_env.sh](scripts/maintenance/setup_env.sh)** - Environment setup
+
+### Testing & Analysis
+- **[scripts/testing/](scripts/testing/)** - Performance tests, feature tests, debug tools
+- **[scripts/analysis/](scripts/analysis/)** - Data analysis, inspection, verification tools
+
+**Full documentation:** [scripts/README.md](scripts/README.md)
 
 ---
 
@@ -116,26 +154,72 @@ Specify file paths directly on command line.
 **Auto Mode** - Process all documents from GCS bucket in batches:
 
 ```bash
-python olmocr_pipeline/process_documents.py --auto --batch-size 10
+python scripts/process_documents.py --auto --batch-size 10
 ```
 
 **Manual Mode** - Process specific files:
 
 ```bash
-python olmocr_pipeline/process_documents.py file1.pdf file2.docx file3.xlsx
+python scripts/process_documents.py file1.pdf file2.docx file3.xlsx
 ```
 
 **Dry Run** - Preview what would be processed:
 
 ```bash
-python olmocr_pipeline/process_documents.py --auto --dry-run
+python scripts/process_documents.py --auto --dry-run
 ```
+
+**Filter by File Type:**
+
+```bash
+# Process only PDFs
+python scripts/process_documents.py --auto --file-types pdf
+
+# Process only DOCX files
+python scripts/process_documents.py --auto --file-types docx
+
+# Multiple types
+python scripts/process_documents.py --auto --file-types pdf,docx,xlsx
+```
+
+**Filter PDFs by Classification:**
+
+```bash
+# Only scanned PDFs (OCR required)
+python scripts/process_documents.py --auto --file-types pdf --pdf-type scanned
+
+# Only digital PDFs (text extraction)
+python scripts/process_documents.py --auto --file-types pdf --pdf-type digital
+```
+
+**Pipeline Separation** (NEW - for iterative workflows):
+
+```bash
+# Step 1: Ingest only (OCR/extraction, skip entities & embeddings)
+python scripts/process_documents.py --auto --ingest-only --file-types pdf --pdf-type scanned
+# Output: Markdown files only (fast iteration later)
+
+# Step 2: Enrich from existing markdown (entities + embeddings)
+python scripts/process_documents.py --auto --enrich-only --limit 100
+# Output: JSONL with entities and embeddings
+
+# Full pipeline (default - both ingest + enrich)
+python scripts/process_documents.py --auto --file-types pdf
+# Output: Complete JSONL with everything
+```
+
+**Use Case:** For scanned PDFs, OCR takes ~300s per file but enrichment only ~13s.
+With `--ingest-only`, you can run expensive OCR once, then iterate freely on entity
+extraction and chunking logic using `--enrich-only` (23x faster!).
 
 **Additional Options:**
 - `--batch-size N` - Files per batch (default: 10)
 - `--preprocess` - Apply image cleanup before OCR (scanned PDFs only)
 - `--limit N` - Process only first N files
 - `--sort-by {name,mtime,mtime_desc}` - Sort order for auto mode
+- `--ingest-only` - Skip entities/embeddings (markdown output only)
+- `--enrich-only` - Process existing markdown with entities/embeddings
+- `--pdf-type {digital,scanned}` - Filter PDFs by classification
 
 **Processing Routes by File Type:**
 - **Digital PDFs** → Docling (text extraction + table detection)
@@ -148,7 +232,7 @@ Output:
 
 ```
 /mnt/gcs/legal-ocr-results/rag_staging/
- ├── jsonl/           # Unified JSONL schema v2.2.0
+ ├── jsonl/           # Unified JSONL schema v2.3.0
  ├── markdown/        # Markdown with preserved tables
  └── logs/            # Processing logs
 /mnt/gcs/legal-ocr-results/manifests/
@@ -197,25 +281,26 @@ ls /mnt/gcs/legal-ocr-results/rag_staging/logs/
 
 Confirm tables, exhibits, and signatures look correct in the output files.
 
-### 5️⃣ Embedding & Retrieval (Haystack)
-
-```python
-from haystack import Document
-from haystack.document_stores.in_memory import InMemoryDocumentStore
-from haystack.components.embedders import SentenceTransformersTextEmbedder
-from haystack.components.retrievers import InMemoryEmbeddingRetriever
-```
-
-Embed each Docling block and store in an `InMemoryDocumentStore`.
-
-### 6️⃣ Interactive RAG
+### 5️⃣ Load to Qdrant
 
 ```bash
-python main.py
+# Load JSONL embeddings to Qdrant vector database
+python scripts/load_to_qdrant.py
 ```
 
-Ask natural-language questions — the system retrieves top-k relevant
-sections and generates context-grounded answers with source citations.
+This creates a persistent Qdrant collection with all embeddings for semantic search.
+
+### 6️⃣ Query the RAG System
+
+```bash
+# Interactive query CLI
+python scripts/query_cli.py
+
+# Or direct query
+python scripts/query_cli.py --query "Find all drilling permits for Lewis tracts"
+```
+
+The system retrieves relevant chunks and provides context-grounded answers.
 
 ### 7️⃣ (Optional) Processing Time Estimation
 
@@ -248,40 +333,47 @@ Requires sufficient manifest data for accurate predictions (recommended: 20+ doc
 ```
 .
 ├── config/
-│   └── default.yaml                    # Phase 2 configuration
-├── /mnt/gcs/legal-ocr-pdf-input/       # GCS input bucket (auto mode)
-├── /mnt/gcs/legal-ocr-results/         # GCS output bucket
-│   ├── rag_staging/
-│   │   ├── jsonl/                      # Unified JSONL schema v2.2.0
-│   │   ├── markdown/                   # Markdown with tables
-│   │   ├── logs/                       # Processing logs
-│   │   └── olmocr_staging/             # OlmOCR temp outputs
-│   ├── manifests/                      # Processing metadata CSVs
-│   │   └── manifest_*.csv              # Batch manifests
-│   └── quarantine/                     # Failed files
-│       ├── quarantine.csv              # Quarantine log
-│       └── */                          # Timestamped failures
-├── olmocr_pipeline/
-│   ├── process_documents.py            # Main multi-format processor
-│   ├── process_pdf.py                  # Legacy scanned PDF processor
-│   ├── handlers/
-│   │   ├── pdf_digital.py              # Digital PDF (Docling)
+│   └── default.yaml                    # Configuration (v2.3.0)
+│
+├── docs/                                # 📚 All documentation
+│   ├── planning/                       # Project planning
+│   │   ├── phases/                     # Phase plans
+│   │   ├── weekly/                     # Weekly summaries
+│   │   └── sessions/                   # Session notes
+│   ├── technical/                      # Technical specs
+│   ├── testing/                        # Test results
+│   ├── guides/                         # How-to guides
+│   └── reference/                      # Reference files
+│
+├── olmocr_pipeline/                     # Core pipeline code
+│   ├── handlers/                       # Document handlers
+│   │   ├── pdf_digital.py              # Digital PDF (Docling, optimized)
 │   │   ├── pdf_scanned.py              # Scanned PDF (OlmOCR-2)
 │   │   ├── docx.py                     # Word documents
 │   │   ├── xlsx.py                     # Excel/CSV
-│   │   └── image.py                    # JPG/PNG/TIF
-│   ├── utils_config.py                 # Config loader
-│   ├── utils_classify.py               # PDF classification
-│   ├── utils_processor.py              # Unified batch processor
-│   ├── utils_quarantine.py             # Retry + quarantine logic
-│   ├── utils_manifest.py               # Manifest generation
-│   ├── utils_schema.py                 # JSONL validation
-│   ├── utils_olmocr.py                 # OlmOCR wrapper (reusable)
-│   ├── utils_estimator.py              # Time estimation
-│   └── utils/
-│       ├── combine_olmocr_outputs.py   # JSONL merger (legacy)
-│       └── generate_ocr_dashboard.py   # Dashboard generator (legacy)
-└── main.py                             # RAG entrypoint
+│   │   └── image.py                    # Images
+│   ├── utils_*.py                      # Utility modules
+│   └── rag_query.py                    # RAG query engine
+│
+├── scripts/                             # 🛠️ All scripts
+│   ├── process_documents.py            # Main processor
+│   ├── load_to_qdrant.py               # Load to vector DB
+│   ├── query_cli.py                    # RAG queries
+│   ├── rebuild_inventory.py            # Rebuild inventory
+│   ├── enrich_from_markdown.py         # Re-enrichment
+│   ├── maintenance/                    # Maintenance scripts
+│   ├── testing/                        # Test scripts
+│   └── analysis/                       # Analysis tools
+│
+├── /mnt/gcs/legal-ocr-pdf-input/       # GCS input bucket
+└── /mnt/gcs/legal-ocr-results/         # GCS output bucket
+    ├── rag_staging/
+    │   ├── jsonl/                      # Schema v2.3.0 with entities + embeddings
+    │   ├── markdown/                   # Markdown with tables
+    │   └── logs/                       # Processing logs
+    ├── manifests/                      # Processing metadata
+    ├── inventory/                      # File inventory cache
+    └── quarantine/                     # Failed files
 ```
 
 ---
@@ -312,11 +404,19 @@ Robust error handling with zero silent failures:
 - Timestamped error logs alongside failed files
 
 ### Batch Processing
-Configurable batch sizes for optimal throughput:
-- Default: 10 files per batch (adjustable via `--batch-size`)
+Optimized for high throughput with parallel processing:
+- **12-worker parallelization** for scanned PDFs (28% faster for batches)
+- **4-worker parallelization** for digital PDFs (3x speedup)
+- **FlashInfer acceleration** for GPU inference (10-20% faster)
+- **Batch size 10** amortizes model loading (saves 80+ minutes per 100 PDFs)
+- **pages_per_group: 10** for better parallelization of large documents (100-200 pages)
+- Thread-local resource reuse eliminates initialization overhead
+- Configurable batch sizes via `--batch-size` flag
 - Sorting options: alphabetical, oldest first, newest first
 - Progress tracking with per-file status updates
 - Manifest CSVs with full processing metadata
+
+**Performance:** ~14.7 hours for 100 mixed PDFs (vs 20.5 hours sequential)
 
 ### Deterministic Output
 Same input always produces same output:
@@ -331,7 +431,7 @@ Same input always produces same output:
 
 | Tier  | Type                       | Description                                          |
 | ----- | -------------------------- | ---------------------------------------------------- |
-| **1** | Schema Validation          | All JSONL records validated against schema v2.2.0    |
+| **1** | Schema Validation          | All JSONL records validated against schema v2.3.0    |
 | **2** | Token Range QA             | Warn if <700 or >2200 tokens, fail if >10% out of range |
 | **3** | Manifest Auditing          | Processing metadata tracked in CSV for every file    |
 | **4** | Quarantine Tracking        | All failures logged with error classification        |
@@ -375,20 +475,21 @@ Same input always produces same output:
                 │
                 ▼
 ┌────────────────────────────────────────┐
-│  Unified JSONL Schema v2.2.0           │
+│  Unified JSONL Schema v2.3.0           │
 │  + Markdown with Preserved Tables      │
 │  + Manifest CSV + Quarantine Tracking  │
+│  + Entities + Embeddings               │
 └────────────────┬───────────────────────┘
                  │
                  ▼
 ┌────────────────────────────────────────┐
-│  🔍 Haystack Embedding + Retrieval     │
-│  Store chunks in InMemoryDocumentStore │
+│  🔍 Qdrant Vector Database             │
+│  Persistent semantic search            │
 └────────────────┬───────────────────────┘
                  │
                  ▼
 ┌────────────────────────────────────────┐
-│  💬 OpenAI GPT-4o-mini RAG             │
+│  💬 RAG Query Engine                   │
 │  Context-grounded answers + citations  │
 └────────────────────────────────────────┘
 ```

@@ -9,6 +9,7 @@ classification, routing, retry logic, and quarantine handling.
 import time
 from pathlib import Path
 from typing import Dict, List
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from utils_config import load_config, get_storage_paths
 from utils_classify import classify_pdf, validate_file_type, SUPPORTED_EXTENSIONS, compute_file_hash
@@ -28,7 +29,8 @@ def process_file_with_retry(
     output_dir: Path,
     config: Dict,
     batch_id: str,
-    apply_preprocessing: bool = False
+    apply_preprocessing: bool = False,
+    skip_enrichment: bool = False
 ) -> Dict:
     """
     Process single file with automatic retry and quarantine logic.
@@ -88,15 +90,16 @@ def process_file_with_retry(
 
                 # Route to digital or scanned handler
                 if classification["type"] == "pdf_digital":
-                    result = process_digital_pdf(file_path, output_dir, config, batch_id)
+                    result = process_digital_pdf(file_path, output_dir, config, batch_id, skip_enrichment=skip_enrichment)
                 else:  # pdf_scanned
                     result = process_scanned_pdf(
                         file_path, output_dir, config, batch_id,
-                        apply_preprocessing=apply_preprocessing
+                        apply_preprocessing=apply_preprocessing,
+                        skip_enrichment=skip_enrichment
                     )
 
             elif file_type == "docx":
-                result = process_docx(file_path, output_dir, config, batch_id)
+                result = process_docx(file_path, output_dir, config, batch_id, skip_enrichment=skip_enrichment)
 
             elif file_type in ["xlsx", "csv"]:
                 result = process_xlsx(file_path, output_dir, config, batch_id)
@@ -162,7 +165,8 @@ def process_batch(
     file_paths: List[Path],
     config: Dict,
     batch_id: str,
-    apply_preprocessing: bool = False
+    apply_preprocessing: bool = False,
+    skip_enrichment: bool = False
 ) -> Dict:
     """
     Process batch of files with unified handling.
@@ -196,7 +200,82 @@ def process_batch(
     print(f"   Files: {len(file_paths)}")
     print(f"{'='*70}")
 
-    for idx, file_path in enumerate(file_paths, 1):
+    # ⚡ Separate digital PDFs from others for parallel processing
+    digital_pdfs = []
+    other_files = []
+
+    for file_path in file_paths:
+        # Quick check if it's a digital PDF
+        if file_path.suffix.lower() == '.pdf':
+            try:
+                classification = classify_pdf(file_path, config)
+                if classification['type'] == 'pdf_digital' and classification['allowed']:
+                    digital_pdfs.append(file_path)
+                else:
+                    other_files.append(file_path)
+            except:
+                other_files.append(file_path)
+        else:
+            other_files.append(file_path)
+
+    # Get parallel workers config
+    digital_workers = config.get("processors", {}).get("digital_pdf_workers", 1)
+
+    # ⚡ Process digital PDFs in parallel (if >1 files and workers configured)
+    if digital_pdfs and len(digital_pdfs) > 1 and digital_workers > 1:
+        print(f"\n⚡ Processing {len(digital_pdfs)} digital PDFs with {digital_workers} parallel workers...")
+        print(f"   (Scanned PDFs and other files will be processed sequentially)\n")
+
+        with ThreadPoolExecutor(max_workers=digital_workers) as executor:
+            # Submit all digital PDFs
+            future_to_pdf = {
+                executor.submit(
+                    process_file_with_retry,
+                    pdf,
+                    output_dir,
+                    config,
+                    batch_id,
+                    apply_preprocessing,
+                    skip_enrichment
+                ): (idx, pdf)
+                for idx, pdf in enumerate(digital_pdfs, 1)
+            }
+
+            # Collect results as they complete
+            for future in as_completed(future_to_pdf):
+                idx, file_path = future_to_pdf[future]
+                print(f"\n[{idx}/{len(file_paths)}] (parallel)")
+
+                try:
+                    result = future.result()
+                    results.append(result)
+
+                    # Handle quarantine
+                    if result.get("quarantined"):
+                        quarantine_dir = paths["quarantine_dir"]
+                        quarantine_location = quarantine_file(
+                            file_path,
+                            quarantine_dir,
+                            result.get("error", "Unknown error"),
+                            retry_count=result.get("retry_count", 0),
+                            processor_attempted=result.get("processor")
+                        )
+
+                        quarantine_records.append({
+                            "file_path": str(file_path),
+                            "file_name": file_path.name,
+                            "file_type": result.get("file_type", "unknown"),
+                            "attempted_processor": result.get("processor", "unknown"),
+                            "error_message": result.get("error", ""),
+                            "retry_count": result.get("retry_count", 0),
+                            "quarantine_location": str(quarantine_location)
+                        })
+                except Exception as e:
+                    print(f"   ❌ Error processing {file_path.name}: {e}")
+
+    # Process remaining files sequentially (scanned PDFs, DOCX, XLSX, etc.)
+    start_idx = len(digital_pdfs) + 1 if (digital_pdfs and digital_workers > 1) else 1
+    for idx, file_path in enumerate(other_files if (digital_pdfs and digital_workers > 1) else file_paths, start_idx):
         print(f"\n[{idx}/{len(file_paths)}]")
 
         result = process_file_with_retry(
@@ -204,7 +283,8 @@ def process_batch(
             output_dir,
             config,
             batch_id,
-            apply_preprocessing
+            apply_preprocessing,
+            skip_enrichment
         )
 
         results.append(result)

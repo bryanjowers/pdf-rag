@@ -8,6 +8,7 @@ Includes fallback to OlmOCR-2 if text yield is too low.
 
 import json
 import time
+import threading
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, Optional, Tuple
@@ -15,6 +16,54 @@ from typing import Dict, Optional, Tuple
 from docling.document_converter import DocumentConverter, PdfFormatOption
 from docling.datamodel.base_models import InputFormat
 from docling.datamodel.pipeline_options import PdfPipelineOptions
+
+# Thread-local storage for reusing expensive resources across multiple PDF processing calls
+_thread_local = threading.local()
+
+
+def get_docling_converter() -> DocumentConverter:
+    """
+    Get or create a thread-local Docling converter instance.
+
+    Reusing the converter across multiple PDFs in the same thread eliminates
+    expensive initialization overhead (model loading, GPU context setup, etc.).
+
+    This is critical for parallel processing performance - without reuse,
+    each PDF would create a new converter, wasting 2-3 seconds per file.
+
+    Returns:
+        DocumentConverter instance (one per thread)
+    """
+    if not hasattr(_thread_local, 'docling_converter'):
+        _thread_local.docling_converter = DocumentConverter()
+    return _thread_local.docling_converter
+
+
+def get_embedding_generator(model_name: str):
+    """
+    Get or create a thread-local embedding generator instance.
+
+    Reusing the embedding model eliminates expensive model loading overhead
+    (downloading/loading 768MB model weights, CUDA initialization, etc.).
+
+    Without reuse, each PDF would reload the model, wasting 1-2 seconds per file.
+
+    Args:
+        model_name: Name of the sentence-transformers model
+
+    Returns:
+        EmbeddingGenerator instance (one per thread per model)
+    """
+    # Import here to avoid circular dependency
+    from utils_embeddings import EmbeddingGenerator
+
+    # Use model name as key for thread-local storage
+    cache_key = f'embedding_gen_{model_name}'
+
+    if not hasattr(_thread_local, cache_key):
+        setattr(_thread_local, cache_key, EmbeddingGenerator(model_name=model_name))
+
+    return getattr(_thread_local, cache_key)
 
 
 def extract_bbox_from_docling(result) -> Dict:
@@ -68,7 +117,8 @@ def process_digital_pdf(
     pdf_path: Path,
     output_dir: Path,
     config: Dict,
-    batch_id: str
+    batch_id: str,
+    skip_enrichment: bool = False
 ) -> Dict:
     """
     Process digital PDF using Docling with fallback to OlmOCR-2.
@@ -116,8 +166,8 @@ def process_digital_pdf(
     jsonl_path = jsonl_dir / f"{stem}.jsonl"
 
     try:
-        # Initialize Docling converter
-        converter = DocumentConverter()
+        # Get thread-local Docling converter (reuses instance for better parallel performance)
+        converter = get_docling_converter()
 
         # Convert PDF to document
         print(f"   🔄 Converting with Docling: {pdf_path.name}")
@@ -155,30 +205,29 @@ def process_digital_pdf(
             bbox_map=bbox_map
         )
 
-        # Add entity extraction if enabled
-        import os
-        enable_entities = config.get("entity_extraction", {}).get("enabled", False)
-        if enable_entities:
-            from utils_entity_integration import add_entities_to_chunks, format_entity_stats
-            api_key = config.get("entity_extraction", {}).get("openai_api_key") or os.getenv("OPENAI_API_KEY")
-            print(f"   🔍 Extracting entities...")
-            chunks, entity_stats = add_entities_to_chunks(
-                chunks,
-                enable_entities=True,
-                api_key=api_key
-            )
-            print(format_entity_stats(entity_stats))
+        # Add entity extraction and embeddings (unless skipped for ingest-only mode)
+        if not skip_enrichment:
+            import os
+            enable_entities = config.get("entity_extraction", {}).get("enabled", False)
+            if enable_entities:
+                from utils_entity_integration import add_entities_to_chunks, format_entity_stats
+                api_key = config.get("entity_extraction", {}).get("openai_api_key") or os.getenv("OPENAI_API_KEY")
+                print(f"   🔍 Extracting entities...")
+                chunks, entity_stats = add_entities_to_chunks(
+                    chunks,
+                    enable_entities=True,
+                    api_key=api_key
+                )
+                print(format_entity_stats(entity_stats))
 
-        # Generate embeddings if enabled
-        enable_embeddings = config.get("embeddings", {}).get("enabled", False)
-        if enable_embeddings:
-            from utils_embeddings import EmbeddingGenerator, format_embedding_stats
-            print(f"   🔢 Generating embeddings...")
-            embedding_gen = EmbeddingGenerator(
-                model_name=config.get("embeddings", {}).get("model", "all-mpnet-base-v2")
-            )
-            chunks = embedding_gen.add_embeddings_to_chunks(chunks, show_progress=False)
-            print(f"   {format_embedding_stats(chunks)}")
+            enable_embeddings = config.get("embeddings", {}).get("enabled", False)
+            if enable_embeddings:
+                from utils_embeddings import format_embedding_stats
+                print(f"   🔢 Generating embeddings...")
+                model_name = config.get("embeddings", {}).get("model", "all-mpnet-base-v2")
+                embedding_gen = get_embedding_generator(model_name)
+                chunks = embedding_gen.add_embeddings_to_chunks(chunks, show_progress=False)
+                print(f"   {format_embedding_stats(chunks)}")
 
         # Write JSONL output
         with jsonl_path.open("w", encoding="utf-8") as f:
