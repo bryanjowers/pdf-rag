@@ -203,6 +203,52 @@ def get_docling_converter() -> DocumentConverter:
 
 ---
 
+## 🗺️ Roadmap Management
+
+### Active Roadmap: docs/planning/ROADMAP.md
+
+**Claude's Responsibilities:**
+1. **Review at session start** - Check current priorities and status
+2. **Update during work** - Mark items as in-progress/completed
+3. **Add new items** - Capture tasks as they emerge during sessions
+4. **Propose priorities** - Suggest next items based on dependencies and impact
+5. **Reference in planning** - Use roadmap to guide session focus
+
+### When to Update Roadmap
+
+**Always update when:**
+- Starting work on a roadmap item (mark "In Progress")
+- Completing a roadmap item (move to "Completed Items")
+- Discovering new tasks or blockers (add to appropriate priority)
+- Changing priorities (user request or dependency changes)
+- Session ends (update status of all active items)
+
+**Roadmap Structure:**
+- **Current Sprint** - Active HIGH/MEDIUM priority items
+- **Backlog** - Future enhancements and technical debt
+- **Completed Items** - Archive of finished work
+
+### Workflow Example
+
+```markdown
+## Session Start
+1. Read docs/planning/ROADMAP.md
+2. Identify HIGH priority items
+3. Propose focus: "Based on roadmap, should we tackle item #1 (parallelization)?"
+
+## During Work
+4. Update roadmap: Change item #1 status to "In Progress"
+5. Document findings in session note
+6. If blocked, add new item: "Debug GPU contention issue"
+
+## Session End
+7. Update roadmap: Mark completed items, update blockers
+8. Create SESSION_PICKUP if needed
+9. Commit roadmap changes with session notes
+```
+
+---
+
 ## 🧪 Testing Standards
 
 ### Before Committing Code

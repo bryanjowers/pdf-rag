@@ -43,6 +43,7 @@ When starting a new session with Claude, complete these steps:
 - [ ] Read readme.md, CONTRIBUTING.md, docs/README.md in order
 - [ ] Check git status and recent commits
 - [ ] Look for SESSION_PICKUP_*.md in docs/planning/sessions/
+- [ ] Review [docs/planning/ROADMAP.md](docs/planning/ROADMAP.md) for current priorities
 - [ ] Use the session initialization template below
 - [ ] Ask user: "What's our focus for this session?"
 
@@ -59,6 +60,7 @@ When starting a new session with Claude, complete these steps:
 
 | Working On | Read This |
 |------------|-----------|
+| **Current priorities** | [docs/planning/ROADMAP.md](docs/planning/ROADMAP.md) - Active sprint and backlog |
 | **Performance optimization** | [docs/technical/PARALLELIZATION_OPTIMIZATION_COMPLETE.md](docs/technical/PARALLELIZATION_OPTIMIZATION_COMPLETE.md) |
 | **Entity extraction** | [docs/guides/ENTITY_EXTRACTION_QA_PLAN.md](docs/guides/ENTITY_EXTRACTION_QA_PLAN.md) |
 | **Qdrant/Embeddings** | [docs/guides/SETUP_INFRASTRUCTURE.md](docs/guides/SETUP_INFRASTRUCTURE.md) |
@@ -115,7 +117,7 @@ What's our focus for this session?
 | Category | Link |
 |----------|------|
 | **Main docs** | [readme.md](readme.md) · [CONTRIBUTING.md](CONTRIBUTING.md) · [docs/README.md](docs/README.md) |
-| **Current work** | [Phase 3 status](docs/planning/phases/PHASE3_READY.md) · [Recent sessions](docs/planning/sessions/) |
+| **Current work** | [Roadmap](docs/planning/ROADMAP.md) · [Phase 3 status](docs/planning/phases/PHASE3_READY.md) · [Recent sessions](docs/planning/sessions/) |
 | **Technical** | [Schema v2.3.0](docs/technical/SCHEMA_V2.3.0.md) · [Infrastructure](docs/guides/SETUP_INFRASTRUCTURE.md) |
 | **Scripts** | [All scripts](scripts/README.md) |
 

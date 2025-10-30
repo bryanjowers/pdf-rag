@@ -2,10 +2,21 @@
 
 This directory contains all project documentation organized by category.
 
+## 🎯 Active Roadmap
+
+**→ [ROADMAP.md](planning/ROADMAP.md)** - Current sprint, priorities, and backlog
+
+Claude actively maintains this roadmap and uses it to:
+- Track current sprint items and priorities
+- Update task status as work progresses
+- Reference when planning sessions
+- Propose new items for prioritization
+
 ## Directory Structure
 
 ### `/planning`
 Project planning, roadmaps, and progress tracking
+- **`ROADMAP.md`** - ⭐ Active roadmap with priorities and status
 - **`/planning/phases/`** - Phase-specific plans and completion reports
 - **`/planning/weekly/`** - Weekly summaries and progress updates
 - **`/planning/sessions/`** - Daily session notes and pickups
