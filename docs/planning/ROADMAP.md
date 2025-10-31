@@ -1,8 +1,8 @@
 # Project Roadmap
 
-**Last Updated:** 2025-10-30 19:20 UTC
+**Last Updated:** 2025-10-31 (Machine migration)
 **Current Phase:** Phase 3 (RAG + Entities) - Demo 1+2, Week 2
-**Last Review:** 2025-10-30 (Active session with Bryan)
+**Last Review:** 2025-10-31 (Active session with Bryan)
 
 This document tracks high-level roadmap items and priorities for the PDF-RAG pipeline project. For detailed session notes, see [sessions/](sessions/).
 

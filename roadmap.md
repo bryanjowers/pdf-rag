@@ -20,7 +20,7 @@ Separate GPU-intensive OCR workload from CPU-only enrichment tasks to reduce inf
    - **Command**: `python scripts/process_documents.py --auto --ingest-only --file-types pdf`
    - **Dependencies**: torch+CUDA, vLLM, OlmOCR, FlashInfer
 
-2. **CPU Box** (n2-standard-8 or c3-standard-8)
+2. **CPU Box** (n2-standard-4 or n2-standard-8)
    - **Purpose**: Enrichment pipeline (markdown → entities + embeddings)
    - **Runtime**: Continuous or scheduled
    - **Command**: `python scripts/process_documents.py --auto --enrich-only`
@@ -86,8 +86,14 @@ The codebase already supports this split via existing flags:
 - **Queue-based**: Replace GCS polling with Pub/Sub for instant triggering
 
 ### Status
-🟢 **Phase 1 Complete** - Setup script created and tested. CPU machine deployed (rag-cpu, us-central1-f).
+🟢 **Phase 1 Complete** - Setup script created and tested. CPU machine deployed (rag-cpu, n2-standard-4, us-central1-f).
 🟡 **Phase 2-3 In Progress** - Documentation updates ongoing, full workflow testing pending.
+
+### Recent Changes
+- **2025-10-31**: Migrated CPU machine from c3-standard-4 to n2-standard-4 for better spot availability
+  - Reason: c3 family has limited capacity in us-central1-f
+  - Result: Improved spot instance availability, same cost
+  - Machine: rag-cpu (n2-standard-4, SPOT, 12h max duration)
 
 ---
 
