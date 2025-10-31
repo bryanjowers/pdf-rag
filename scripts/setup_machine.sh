@@ -110,9 +110,19 @@ sudo apt-get install -y -qq \
     vim \
     htop \
     tmux \
-    gcsfuse \
-    ca-certificates
-success "System packages updated"
+    ca-certificates \
+    gnupg \
+    lsb-release
+success "Base system packages updated"
+
+# Install gcsfuse from Google Cloud repository
+section "Installing gcsfuse"
+export GCSFUSE_REPO=gcsfuse-$(lsb_release -c -s)
+echo "deb https://packages.cloud.google.com/apt $GCSFUSE_REPO main" | sudo tee /etc/apt/sources.list.d/gcsfuse.list
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+sudo apt-get update -qq
+sudo apt-get install -y -qq gcsfuse
+success "gcsfuse installed"
 
 #
 # 2. Install Miniconda (if not present)
