@@ -40,22 +40,24 @@ Separate GPU-intensive OCR workload from CPU-only enrichment tasks to reduce inf
 
 ### Implementation Plan
 
-#### Phase 1: Environment Setup Script
-Create `scripts/setup_env.sh` with machine role detection:
+#### Phase 1: Environment Setup Script ✅
+Created `scripts/setup_machine.sh` with machine role detection:
 
 ```bash
-./scripts/setup_env.sh --role gpu   # Installs GPU dependencies
-./scripts/setup_env.sh --role cpu   # Installs CPU-only dependencies
+./scripts/setup_machine.sh --role gpu   # Installs GPU dependencies
+./scripts/setup_machine.sh --role cpu   # Installs CPU-only dependencies
 ```
 
 **Tasks:**
-- [ ] Create setup script with gpu/cpu modes
-- [ ] Install appropriate conda environment per role
-- [ ] Validate GCS mount access
-- [ ] Configure systemd services or cron jobs (optional)
+- [x] Create setup script with gpu/cpu modes
+- [x] Install appropriate conda environment per role
+- [x] Validate GCS mount access
+- [x] Create activation helper script
+- [ ] Configure systemd services or cron jobs (optional - future)
 
-#### Phase 2: Documentation
-- [ ] Update README.md with two-machine deployment instructions
+#### Phase 2: Documentation 🚧
+- [x] Update README.md with machine setup quick start
+- [x] Document `--ingest-only` and `--enrich-only` flags
 - [ ] Document GPU box provisioning and teardown workflow
 - [ ] Add cost comparison table (single GPU vs split architecture)
 - [ ] Create troubleshooting guide for cross-machine coordination
@@ -84,7 +86,8 @@ The codebase already supports this split via existing flags:
 - **Queue-based**: Replace GCS polling with Pub/Sub for instant triggering
 
 ### Status
-🟡 **Planned** - Architecture validated, pipeline flags ready, awaiting implementation.
+🟢 **Phase 1 Complete** - Setup script created and tested. CPU machine deployed (rag-cpu, us-central1-f).
+🟡 **Phase 2-3 In Progress** - Documentation updates ongoing, full workflow testing pending.
 
 ---
 

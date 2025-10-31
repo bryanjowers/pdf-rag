@@ -62,9 +62,40 @@ unified Markdown + JSONL outputs ready for RAG.
 
 ## 🚀 Quick Start
 
+### Machine Setup (First Time)
+
+**For new GCP machines**, use the automated setup script:
+
+```bash
+# Clone repository
+git clone https://github.com/bryanjowers/pdf-rag.git
+cd pdf-rag
+
+# Run setup script with appropriate role
+./scripts/setup_machine.sh --role gpu   # For GPU machine (OCR workload)
+# OR
+./scripts/setup_machine.sh --role cpu   # For CPU machine (enrichment workload)
+
+# Activate environment
+conda activate pdf-rag
+```
+
+**What the setup script does:**
+- Installs system dependencies (gcsfuse, build tools)
+- Installs Miniconda + creates conda environment
+- Installs role-specific packages:
+  - **GPU role**: PyTorch (CUDA), vLLM, OlmOCR
+  - **CPU role**: PyTorch (CPU-only), spaCy, sentence-transformers, Qdrant
+- Validates GCS mount access
+- Creates activation helper: `~/activate_rag.sh`
+
+See **[roadmap.md](roadmap.md)** for two-machine architecture details.
+
+### Processing Documents
+
 ```bash
 # 1. Activate environment
-conda activate olmocr-optimized
+conda activate pdf-rag  # or `olmocr-optimized` for existing setups
 
 # 2. Place documents in input directory or GCS bucket
 cp your-files/* /mnt/gcs/legal-ocr-pdf-input/
@@ -76,6 +107,12 @@ python scripts/process_documents.py --auto --batch-size 10
 
 # For single/few documents:
 python scripts/process_documents.py --auto
+
+# GPU-only (OCR to markdown):
+python scripts/process_documents.py --auto --ingest-only
+
+# CPU-only (entities + embeddings):
+python scripts/process_documents.py --auto --enrich-only
 
 # 4. Load processed documents to Qdrant vector database
 python scripts/load_to_qdrant.py
@@ -212,14 +249,49 @@ python scripts/process_documents.py --auto --file-types pdf
 With `--ingest-only`, you can run expensive OCR once, then iterate freely on entity
 extraction and chunking logic using `--enrich-only` (23x faster!).
 
-**Additional Options:**
-- `--batch-size N` - Files per batch (default: 10)
-- `--preprocess` - Apply image cleanup before OCR (scanned PDFs only)
-- `--limit N` - Process only first N files
-- `--sort-by {name,mtime,mtime_desc}` - Sort order for auto mode
-- `--ingest-only` - Skip entities/embeddings (markdown output only)
-- `--enrich-only` - Process existing markdown with entities/embeddings
-- `--pdf-type {digital,scanned}` - Filter PDFs by classification
+### Complete Flag Reference
+
+| Category | Flag | Type | Default | Description |
+|----------|------|------|---------|-------------|
+| **Input Source** | `files` | positional | - | Path(s) to input file(s) - not required with --auto |
+| | `--auto` | flag | False | Auto-discover files from GCS input bucket |
+| **File Filtering** | `--file-types` | string | None | Comma-separated file types (e.g., 'pdf,docx,xlsx') |
+| | `--pdf-type` | choice | None | Filter PDFs by type: `digital` or `scanned` |
+| **Batch Processing** | `--batch-size` | int | 5 | Number of files to process per batch |
+| | `--sort-by` | choice | `name` | Sort order: `name`, `mtime`, `mtime_desc`, `pages`, `pages_desc` |
+| | `--limit` | int | None | Limit total number of files to process |
+| **Watch Mode** | `--watch` | flag | False | Continuously poll for new files (requires --auto) |
+| | `--watch-interval` | int | 60 | Seconds between scans in watch mode |
+| **Processing Options** | `--summary` | flag | False | Generate summary JSON after processing each file |
+| | `--preprocess` | flag | False | Apply image cleanup before OCR (scanned PDFs only) |
+| | `--workers` | int | 6 | Parallel workers for processing |
+| **Pipeline Separation** | `--ingest-only` | flag | False | Extract text/markdown but skip entities and embeddings |
+| | `--enrich-only` | flag | False | Process existing markdown with entities and embeddings |
+| **Utility Flags** | `--dry-run` | flag | False | Preview files without processing |
+| | `--rebuild-inventory` | flag | False | Force rebuild inventory even if it exists |
+| | `--no-skip-processed` | flag | True | Disable skipping of already-processed files |
+| | `--reprocess-all` | flag | False | Clear all success markers and reprocess all files |
+| | `--reprocess-hash` | string | None | Reprocess specific file by hash (prefix match) |
+
+**Key Notes:**
+- **NEW**: `--sort-by pages` sorts files by page count (smallest first, recommended for faster feedback)
+- **NEW**: `--sort-by pages_desc` sorts files by page count (largest first)
+- `--pdf-type` requires `--file-types` to include 'pdf'
+- `--watch` requires `--auto`
+- Cannot use `--ingest-only` and `--enrich-only` together
+- Either provide file paths OR use `--auto`, not both
+
+**Common Command Examples:**
+```bash
+# Process all PDFs, smallest first (recommended for faster feedback)
+python scripts/process_documents.py --auto --ingest-only --file-types pdf --batch-size 10 --sort-by pages
+
+# Process only scanned PDFs, largest first
+python scripts/process_documents.py --auto --file-types pdf --pdf-type scanned --sort-by pages_desc
+
+# Dry run to preview what would be processed
+python scripts/process_documents.py --auto --file-types pdf --sort-by pages --dry-run
+```
 
 **Processing Routes by File Type:**
 - **Digital PDFs** → Docling (text extraction + table detection)
