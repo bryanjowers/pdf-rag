@@ -138,10 +138,15 @@ else
     success "Miniconda installed"
 fi
 
-# Initialize conda for bash
-eval "$($HOME/miniconda/bin/conda shell.bash hook)"
-conda init bash
+# Initialize conda for bash (with first-run setup)
+source "$HOME/miniconda/etc/profile.d/conda.sh"
+conda config --set auto_activate_base false
+conda init bash --no-user 2>/dev/null || conda init bash
 success "Conda initialized for bash"
+
+# Source the updated bashrc to get conda in current shell
+source "$HOME/.bashrc" 2>/dev/null || true
+eval "$($HOME/miniconda/bin/conda shell.bash hook)"
 
 #
 # 3. Create Conda Environment
