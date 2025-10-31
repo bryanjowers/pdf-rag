@@ -146,8 +146,8 @@ Supported file types: PDF (scanned/digital), DOCX, XLSX, CSV, JPG, PNG, TIF
     # Batch processing
     parser.add_argument("--batch-size", type=int, default=5,
                         help="Number of files to process per batch (default: 5)")
-    parser.add_argument("--sort-by", choices=["name", "mtime", "mtime_desc"], default="name",
-                        help="Sort order for auto mode")
+    parser.add_argument("--sort-by", choices=["name", "mtime", "mtime_desc", "pages", "pages_desc"], default="name",
+                        help="Sort order for auto mode (pages = smallest first, pages_desc = largest first)")
     parser.add_argument("--limit", type=int, default=None,
                         help="Limit total number of files to process")
 
@@ -277,6 +277,21 @@ Supported file types: PDF (scanned/digital), DOCX, XLSX, CSV, JPG, PNG, TIF
             # Load inventory
             inventory = load_inventory(inventory_path)
             print_inventory_summary(inventory)
+
+            # Sort by pages if requested (after loading, since page counts come from inventory)
+            if args.sort_by in ["pages", "pages_desc"]:
+                def get_page_count(record):
+                    """Extract page count, handling None and empty string cases."""
+                    pages = record.get("total_pages")
+                    if pages is None or pages == "":
+                        return 999999  # Put files without page counts at the end
+                    try:
+                        return int(pages)
+                    except (ValueError, TypeError):
+                        return 999999
+
+                inventory.sort(key=get_page_count, reverse=(args.sort_by == "pages_desc"))
+                print(f"   Sorted by page count ({'largest first' if args.sort_by == 'pages_desc' else 'smallest first'})\n")
 
             # Filter by file types if specified
             if args.file_types:

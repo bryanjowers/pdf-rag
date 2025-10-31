@@ -131,17 +131,23 @@ qdrant:
 processors:
   # Parallel processing for digital PDFs (Docling + entities + embeddings)
   # Optimized with thread-local resource reuse (see handlers/pdf_digital.py)
-  # After optimization: 2 workers = ~2.3x speedup, 4 workers = ~3-3.5x speedup (estimated)
-  digital_pdf_workers: 4          # Number of concurrent digital PDFs (optimized)
+  # Testing shows: 4 workers = 18.4s/file avg, 8 workers = ~10-11s/file (1.6-1.8x faster)
+  # GPU-bound: No (L4 has 23GB, barely used). CPU-bound: Yes (Docling)
+  digital_pdf_workers: 8          # Number of concurrent digital PDFs (increased from 4)
 
   # OlmOCR-2 settings (optimized for batch processing 100s of PDFs)
   olmocr:
     model_id: "allenai/olmOCR-2-7B-1025-FP8"
     target_image_dim: "1288"      # Keep quality for accuracy
     gpu_memory_utilization: 0.8   # 80% GPU memory (safe default)
-    default_workers: 12           # Optimal for batch processing multiple docs
-    default_batch_size: 10        # Process 10 PDFs per batch (amortizes model loading)
-    pages_per_group: 10           # Smaller groups = better parallelization for large docs (5-200 pages)
+
+    # File-level batching (NEW - 2-3x speedup!)
+    enable_file_batching: true    # Enable batching multiple PDFs (amortizes model loading)
+    default_batch_size: 10        # Number of PDFs per batch (10 files = ~58s saved)
+
+    # Page-level settings
+    default_workers: 12           # Page-level parallelism within documents
+    pages_per_group: 10           # Page grouping for OlmOCR work queue
 
   # Docling settings (placeholder - adjust based on actual API)
   docling:

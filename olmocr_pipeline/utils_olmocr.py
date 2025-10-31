@@ -169,12 +169,18 @@ def get_olmocr_jsonl_path(
             with dctx.stream_reader(f) as reader:
                 text_stream = reader.read().decode('utf-8')
                 for row in csv.reader(text_stream.splitlines()):
-                    if len(row) == 2:
-                        hash_val, file_path = row
-                        if Path(file_path) == input_path.resolve():
-                            jsonl_path = results_dir / f"output_{hash_val}.jsonl"
-                            if jsonl_path.exists():
-                                return jsonl_path
+                    if len(row) >= 2:
+                        # Row format: hash, file1, file2, file3, ...
+                        # When batched, multiple files map to same hash
+                        hash_val = row[0]
+                        file_paths = row[1:]
+
+                        # Check if our input_path is in this batch
+                        for file_path in file_paths:
+                            if Path(file_path) == input_path.resolve():
+                                jsonl_path = results_dir / f"output_{hash_val}.jsonl"
+                                if jsonl_path.exists():
+                                    return jsonl_path
     except Exception:
         pass
 
@@ -258,7 +264,10 @@ def olmocr_jsonl_to_markdown(jsonl_path: Path) -> str:
         raise ValueError(f"Failed to read JSONL: {e}")
 
 
-def olmocr_jsonl_to_markdown_with_pages(jsonl_path: Path) -> tuple[str, Dict[str, int]]:
+def olmocr_jsonl_to_markdown_with_pages(
+    jsonl_path: Path,
+    filter_source_file: Optional[Path] = None
+) -> tuple[str, Dict[str, int]]:
     """
     Convert OlmOCR JSONL output to markdown with character-based page mapping.
 
@@ -267,6 +276,7 @@ def olmocr_jsonl_to_markdown_with_pages(jsonl_path: Path) -> tuple[str, Dict[str
 
     Args:
         jsonl_path: Path to JSONL file
+        filter_source_file: If specified, only extract data for this source file (for batched results)
 
     Returns:
         Tuple of (markdown_content, page_ranges) where page_ranges maps character positions to pages
@@ -294,6 +304,13 @@ def olmocr_jsonl_to_markdown_with_pages(jsonl_path: Path) -> tuple[str, Dict[str
 
                 try:
                     data = json.loads(line)
+
+                    # If filtering by source file, check metadata
+                    if filter_source_file:
+                        source = data.get("metadata", {}).get("Source-File", "")
+                        if source and Path(source).resolve() != filter_source_file.resolve():
+                            continue  # Skip entries from other files in the batch
+
                     text = data.get("text", "")
 
                     if text:

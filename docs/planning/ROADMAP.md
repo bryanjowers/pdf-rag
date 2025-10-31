@@ -1,7 +1,8 @@
 # Project Roadmap
 
-**Last Updated:** 2025-10-30
-**Current Phase:** Phase 3 (RAG + Entities)
+**Last Updated:** 2025-10-30 19:20 UTC
+**Current Phase:** Phase 3 (RAG + Entities) - Demo 1+2, Week 2
+**Last Review:** 2025-10-30 (Active session with Bryan)
 
 This document tracks high-level roadmap items and priorities for the PDF-RAG pipeline project. For detailed session notes, see [sessions/](sessions/).
 
@@ -11,29 +12,105 @@ This document tracks high-level roadmap items and priorities for the PDF-RAG pip
 
 ### 🔴 High Priority
 
-#### 1. Investigate Parallelization Underperformance
-**Status:** Pending
+#### 1. Establish Baseline for Scanned PDF Processing
+**Status:** In Progress (Batch 1 running)
 **Priority:** HIGH
+**Estimated Time:** 1-2 hours
+
+**Goal:** Create baseline metrics for scanned PDF processing with OlmOCR-2
+
+**Current Work:**
+- Running Batch 1: 10 scanned PDFs (ingest-only mode)
+- Config: 12 workers, batch size 10, pages_per_group 10
+- Document set: 105 scanned PDFs total (0 digital)
+- Capturing per-page normalized metrics for comparison
+
+**Baseline Metrics to Capture:**
+- Processing time per page (seconds)
+- Character yield per page (OCR quality)
+- Success/failure rate
+- GPU utilization
+- Per-file breakdown
+
+**Next Steps:**
+- [ ] Complete Batch 1 baseline (~45-60 min)
+- [ ] Extract and document metrics
+- [ ] Run Batch 2 (next 10 files) for comparison
+- [ ] Validate config performs consistently
+- [ ] Decide on production processing approach
+
+**Documentation:**
+- [SCANNED_PDF_BASELINE_BATCH1.md](../testing/SCANNED_PDF_BASELINE_BATCH1.md)
+
+---
+
+#### 2. OlmOCR Sequential Processing Inefficiency (Scanned PDFs)
+**Status:** Documented
+**Priority:** HIGH
+**Estimated Time:** 4-8 hours (architectural change)
+
+**Problem:** Scanned PDFs processed sequentially one-at-a-time, causing ~30% time waste on model loading/unloading between files.
+
+**Root Cause Analysis:**
+- **File:** [olmocr_pipeline/utils_processor.py:276-288](../../olmocr_pipeline/utils_processor.py#L276-L288)
+  - Scanned PDFs processed in sequential loop, one file at a time
+  - Each iteration calls `process_file_with_retry()` with single file
+
+- **File:** [olmocr_pipeline/handlers/pdf_scanned.py:97-102](../../olmocr_pipeline/handlers/pdf_scanned.py#L97-L102)
+  - Each file independently calls `run_olmocr_batch()` with single file
+  - Causes OlmOCR model to load → process → unload → repeat
+
+**Current Config Behavior:**
+- `batch_size: 10` controls page batching WITHIN a document
+- `default_workers: 12` controls page parallelism WITHIN a document
+- No file-level batching across multiple documents
+
+**Impact:**
+- GPU utilization drops to 0% between files (confirmed with nvidia-smi)
+- ~30% of processing time wasted on model startup/teardown
+- Potential 2-3x speedup with true file-level batching
+
+**Potential Solution:**
+- Group 10 scanned PDFs and pass all to single `run_olmocr_batch()` call
+- OlmOCR loads once, processes all files, unloads once
+- Requires architectural change to batch files before processing
+
+**Next Steps:**
+- [ ] Complete baseline testing with current architecture
+- [ ] Measure actual time waste (model loading vs OCR time)
+- [ ] Review OlmOCR README for multi-file batch support
+- [ ] Prototype file-level batching implementation
+- [ ] Compare baseline vs batched performance
+
+**Related Docs:**
+- [SCANNED_PDF_BASELINE_BATCH1.md](../testing/SCANNED_PDF_BASELINE_BATCH1.md)
+- OlmOCR README: https://github.com/allenai/olmocr/blob/main/README.md
+
+---
+
+#### 3. Investigate Digital PDF Parallelization Underperformance
+**Status:** Pending
+**Priority:** MEDIUM (lower after discovering scanned PDF issue)
 **Estimated Time:** 1-2 hours
 
 **Problem:** Digital PDF parallel processing only achieving 1.28x speedup instead of expected 1.8-2x with 2 workers.
 
 **Current Config:**
-- 4 workers configured in `config/default.yaml`
-- Expected: ~3-3.5x speedup
+- 8 workers configured in `config/default.yaml` (updated from 4)
+- Expected: ~1.6-1.8x speedup with 8 workers
 - Need to measure actual performance
 
 **Investigation Plan:**
 - [ ] Check if files are actually running in parallel (log analysis)
 - [ ] Profile where time is spent (Docling, entities, embeddings, I/O)
-- [ ] Test different worker counts (1, 2, 4, 6)
+- [ ] Test different worker counts (1, 2, 4, 8)
 - [ ] Check for GPU contention or bottlenecks
 - [ ] Verify thread-local resource reuse is working
 
 **Success Criteria:**
 - 2 workers: ≥1.6x speedup
 - 4 workers: ≥2.5x speedup
-- 6 workers: ≥3.5x speedup
+- 8 workers: ≥3.5x speedup
 
 **Related Docs:**
 - [SESSION_PICKUP_2025-10-31.md](sessions/SESSION_PICKUP_2025-10-31.md)
@@ -41,29 +118,34 @@ This document tracks high-level roadmap items and priorities for the PDF-RAG pip
 
 ---
 
-#### 2. Clarify HTML Output Requirement
-**Status:** Pending
-**Priority:** HIGH
-**Estimated Time:** 15 minutes
+#### 4. Clarify HTML Output Requirement
+**Status:** ✅ Resolved
+**Priority:** HIGH (completed)
+**Time Spent:** 15 minutes
 
-**Question:** Is HTML output needed for RAG queries, or is markdown sufficient?
+**Decision:** HTML output NOT needed for Phase 3
+
+**Rationale:**
+- Phase 3 plan (PHASE3_PLAN.md) requires only JSONL + Markdown
+- JSONL feeds Qdrant vector database (primary RAG source)
+- Markdown provides human-readable format for QA and reports
+- HTML not mentioned in any demo requirements or validation gates
 
 **Current State:**
 - Markdown: ✅ Generated for all files
-- JSONL: ✅ Generated with entities + embeddings
-- HTML: ❌ Only 1 old file (Oct 28)
+- JSONL: ✅ Generated with entities + embeddings (schema v2.3.0)
+- HTML: ❌ Not required
 
-**Options:**
-1. **HTML needed:** Investigate Docling config, add HTML output verification
-2. **HTML NOT needed:** Remove HTML checks from tests, update documentation
-
-**Decision Needed:** User confirmation
+**Follow-up Actions:**
+- [ ] Remove HTML directory creation from pipeline (optional cleanup)
+- [ ] Update tests to not check for HTML output
+- [ ] Document decision in schema docs
 
 ---
 
 ### 🟡 Medium Priority
 
-#### 3. Process Remaining Digital PDFs
+#### 5. Process All Scanned PDFs (Ingest-Only)
 **Status:** Pending
 **Priority:** MEDIUM
 **Estimated Time:** ~11 minutes (with 4 workers)
@@ -74,43 +156,47 @@ This document tracks high-level roadmap items and priorities for the PDF-RAG pip
 - Expected time: ~11 minutes
 - Savings vs sequential: ~3.5 minutes
 
-**Depends On:** Decision on whether to fix parallelization first (#1)
+**Depends On:** Baseline testing completion (#1)
 
 **Command:**
 ```bash
-python scripts/process_documents.py --auto --file-types pdf --pdf-type digital
+python scripts/process_documents.py --auto --file-types pdf --pdf-type scanned --ingest-only
 ```
 
 ---
 
-#### 4. Process Scanned PDFs
+#### 6. Enrich Markdown with Entities & Embeddings
 **Status:** Pending
 **Priority:** MEDIUM
-**Estimated Time:** ~17.5 hours
+**Estimated Time:** ~10-15 minutes for 50 files
+
+**After ingest-only completes**, run enrichment pipeline:
 
 **Details:**
-- Total: 211 scanned PDFs
-- Processing: Sequential (GPU-bound, OlmOCR-2)
-- Current config: 12 workers, batch size 10, pages_per_group 10
-- Best run as overnight batch
+- Process existing markdown files
+- Add entity extraction (GPT-4o-mini)
+- Add embeddings (all-mpnet-base-v2, 768d)
+- Create final JSONL with schema v2.3.0
+- 23x faster than full pipeline
 
-**Depends On:** Completing digital PDFs (#3)
+**Depends On:** Completing ingest-only (#5)
 
 **Command:**
 ```bash
-python scripts/process_documents.py --auto --file-types pdf --pdf-type scanned --batch-size 10
+python scripts/enrich_from_markdown.py --auto --limit 50
 ```
 
-**Optimization Notes:**
-- 28% faster than baseline with current config
-- FlashInfer acceleration enabled (10-20% speedup)
-- See: [SCANNED_PDF_OPTIMIZATION_GUIDE.md](../technical/SCANNED_PDF_OPTIMIZATION_GUIDE.md)
+**Benefits:**
+- Fast iteration on entity/embedding logic
+- Can change models without re-running OCR
+- Can adjust chunking strategy
+- Can switch embedding models later
 
 ---
 
 ### 🟢 Phase 3 Completion
 
-#### 5. Test RAG Query System End-to-End
+#### 7. Test RAG Query System End-to-End
 **Status:** Pending
 **Priority:** MEDIUM
 **Estimated Time:** 1-2 hours
@@ -140,7 +226,7 @@ python scripts/query_cli.py
 
 ---
 
-#### 6. Verify Qdrant Persistence
+#### 8. Verify Qdrant Persistence
 **Status:** Pending
 **Priority:** LOW
 **Estimated Time:** 30 minutes
@@ -158,7 +244,7 @@ python scripts/analysis/verify_qdrant_persistence.py
 
 ---
 
-#### 7. Document Phase 3 Completion
+#### 9. Document Phase 3 Completion
 **Status:** Pending
 **Priority:** LOW
 **Estimated Time:** 1-2 hours
@@ -177,6 +263,10 @@ python scripts/analysis/verify_qdrant_persistence.py
 ## Backlog
 
 ### Future Enhancements
+- **Switch to OpenAI embeddings** - text-embedding-3-small (1536d) per Phase 3 plan
+  - Current: all-mpnet-base-v2 (768d, free, local GPU)
+  - Future: OpenAI text-embedding-3-small (1536d, $0.02/1M tokens)
+  - Rationale: Following "95% rule" - current embeddings working, switch if needed
 - Query API with REST endpoints
 - Batch query processing
 - Advanced entity linking and normalization
@@ -219,6 +309,7 @@ python scripts/analysis/verify_qdrant_persistence.py
 - ✅ FlashInfer GPU acceleration
 - ✅ OlmOCR-2 optimization (12 workers, batch 10)
 - ✅ Documentation restructure
+- ✅ HTML output clarified (not needed - JSONL + Markdown only)
 - ⚠️ Parallelization performance (needs investigation)
 
 ---

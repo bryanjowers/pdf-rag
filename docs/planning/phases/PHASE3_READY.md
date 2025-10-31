@@ -12,7 +12,8 @@ You've approved the **pragmatic, 95%-solution approach** for Phase 3. Here's wha
 
 | Decision | Choice | Rationale |
 |----------|--------|-----------|
-| **OSS Stack** | Pragmatic (OpenAI) | Fast iteration, migrate to OSS later if needed |
+| **OSS Stack** | Pragmatic (OpenAI for LLM) | Fast iteration, migrate to OSS later if needed |
+| **Embeddings** | Keep all-mpnet-base-v2 (768d) | Working now, defer OpenAI switch ("95% rule") |
 | **Bbox Strategy** | Try Docling (Option A) | 1-day spike, fallback to page-level if needed |
 | **Demo Scope** | Merge Demos 1+2 | Faster time-to-value, single compelling demo |
 | **Success Metric** | Entity-aware search | "Find docs where John Smith conveyed to Mary Johnson" |
