@@ -34,6 +34,8 @@ filelock>=3.13.0            # Single-instance locking
 psutil>=5.9.0               # Process management
 PyYAML>=6.0                 # Configuration management
 pandas>=2.0.0               # Data handling
+flask>=3.0.0                # QA Viewer web interface
+markdown>=3.0               # Markdown to HTML conversion (QA Viewer)
 
 # Legacy (backward compatibility)
 haystack-ai                 # Used in earlier phases
